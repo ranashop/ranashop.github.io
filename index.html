@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RANA SHOP - Top Up Game</title>
+<meta name="description" content="RANA SHOP - Top Up Game Cepat, Aman & Terpercaya">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#071014;color:#fff}
+.header{position:sticky;top:0;z-index:1000;background:rgba(5,10,12,.96);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px)}
+.header-inner{max-width:1200px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:25px;font-weight:900;color:#ffd400;letter-spacing:1px}
+.logo span{color:#00e5ff}
+.nav{display:flex;gap:8px}
+.nav a{color:#fff;text-decoration:none;padding:9px 13px;border-radius:9px;font-size:14px;font-weight:700}
+.nav a:hover{background:#ffd400;color:#111}
+.hero{text-align:center;padding:38px 18px 25px;background:radial-gradient(circle at top,rgba(0,229,255,.16),transparent 45%),#071014}
+.hero h1{font-size:clamp(30px,7vw,55px);font-weight:900}
+.hero h1 span{color:#ffd400}
+.hero p{margin-top:10px;color:#c8d2d5;font-size:16px}
+
+.banner-section{max-width:1200px;margin:20px auto;padding:0 12px}
+.banner-box{position:relative;overflow:hidden;border-radius:18px;background:#111;box-shadow:0 12px 35px rgba(0,0,0,.45)}
+.banner-track{display:flex;width:100%;transition:transform .6s ease}
+.banner-slide{min-width:100%;flex-shrink:0}
+.banner-slide img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.banner-arrow{position:absolute;top:50%;transform:translateY(-50%);width:43px;height:43px;border:0;border-radius:50%;background:rgba(0,0,0,.7);color:#fff;font-size:28px;font-weight:bold;cursor:pointer;z-index:10}
+.banner-arrow:hover{background:#ffd400;color:#111}
+.banner-prev{left:12px}.banner-next{right:12px}
+.banner-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:10}
+.banner-dot{width:9px;height:9px;border:0;border-radius:20px;background:rgba(255,255,255,.55);cursor:pointer}
+.banner-dot.active{width:25px;background:#ffd400}
+
+.contact{max-width:700px;margin:20px auto 35px;padding:0 12px;display:flex;justify-content:center;gap:12px}
+.contact-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 18px;border-radius:13px;text-decoration:none;color:#fff;font-weight:800;box-shadow:0 7px 20px rgba(0,0,0,.25);transition:.2s}
+.contact-btn:hover{transform:translateY(-3px)}
+.whatsapp{background:#25D366}
+.instagram{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4)}
+.contact-icon{font-size:23px}
+
+.section{max-width:1100px;margin:45px auto;padding:0 18px}
+.section-title{text-align:center;margin-bottom:22px}
+.section-title h2{font-size:30px;color:#ffd400}
+.section-title p{margin-top:7px;color:#aebbc0}
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.game-card{background:linear-gradient(145deg,#101d21,#071014);border:1px solid rgba(0,229,255,.18);border-radius:17px;padding:23px;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,.25);transition:.25s}
+.game-card:hover{transform:translateY(-5px);border-color:#00e5ff}
+.game-icon{font-size:52px;margin-bottom:10px}
+.game-card h3{font-size:21px;margin-bottom:7px}
+.game-card p{color:#aebbc0;font-size:14px;margin-bottom:17px}
+.game-btn{display:block;padding:12px;background:#ffd400;color:#111;border-radius:10px;text-decoration:none;font-weight:900}
+.game-btn:hover{background:#fff}
+
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.feature{text-align:center;padding:20px 12px;background:#0d191d;border-radius:14px;border:1px solid rgba(255,255,255,.07)}
+.feature-icon{font-size:30px;margin-bottom:8px}
+.feature h3{font-size:15px;margin-bottom:5px}
+.feature p{color:#9eaaae;font-size:12px}
+
+.cta{max-width:1000px;margin:50px auto;padding:35px 20px;text-align:center;border-radius:20px;background:linear-gradient(135deg,rgba(0,229,255,.13),rgba(255,212,0,.13));border:1px solid rgba(255,255,255,.08)}
+.cta h2{font-size:29px;margin-bottom:10px}
+.cta p{color:#b7c2c5;margin-bottom:20px}
+.cta-btn{display:inline-block;background:#ffd400;color:#111;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:900}
+
+footer{margin-top:60px;padding:30px 18px;text-align:center;background:#04090b;border-top:1px solid rgba(255,255,255,.08)}
+.footer-logo{font-size:24px;font-weight:900;color:#ffd400}
+.footer-logo span{color:#00e5ff}
+footer p{margin-top:8px;color:#89969a;font-size:13px}
+.footer-contact{margin-top:12px}
+.footer-contact a{color:#00e5ff;text-decoration:none}
+
+@media(max-width:700px){
+.header-inner{padding:12px}.logo{font-size:20px}.nav a{padding:7px;font-size:12px}
+.hero{padding:28px 12px 18px}.hero p{font-size:14px}
+.banner-section{padding:0 7px;margin-top:10px}.banner-box{border-radius:12px}
+.banner-arrow{width:34px;height:34px;font-size:21px}.banner-prev{left:7px}.banner-next{right:7px}
+.banner-dots{bottom:8px}.banner-dot{width:7px;height:7px}.banner-dot.active{width:20px}
+.contact{gap:8px}.contact-btn{padding:11px 8px;font-size:12px}.contact-icon{font-size:18px}
+.games{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}
+.section{margin:35px auto}
+}
+@media(max-width:380px){
+.nav a:nth-child(2){display:none}.contact{flex-direction:column}.contact-btn{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="header-inner">
+<div class="logo">RANA <span>SHOP</span></div>
+<nav class="nav">
+<a href="#beranda">Beranda</a>
+<a href="#game">Game</a>
+<a href="#kontak">Kontak</a>
+</nav>
+</div>
+</header>
+
+<section class="hero" id="beranda">
+<h1>TOP UP <span>RANA SHOP</span></h1>
+<p>Top Up Game Cepat, Aman & Terpercaya</p>
+</section>
+
+<section class="banner-section">
+<div class="banner-box">
+<div class="banner-track" id="bannerTrack">
+<div class="banner-slide"><img src="banner-ml.jpg" alt="RANA SHOP Mobile Legends"></div>
+<div class="banner-slide"><img src="banner-ml-pass.jpg" alt="RANA SHOP Weekly Diamond Pass"></div>
+<div class="banner-slide"><img src="banner-ff.jpg" alt="RANA SHOP Free Fire"></div>
+<div class="banner-slide"><img src="banner-pubg.jpg" alt="RANA SHOP PUBG Mobile"></div>
+</div>
+
+<button class="banner-arrow banner-prev" onclick="prevBanner()">‹</button>
+<button class="banner-arrow banner-next" onclick="nextBanner()">›</button>
+
+<div class="banner-dots">
+<button class="banner-dot active" onclick="goBanner(0)"></button>
+<button class="banner-dot" onclick="goBanner(1)"></button>
+<button class="banner-dot" onclick="goBanner(2)"></button>
+<button class="banner-dot" onclick="goBanner(3)"></button>
+</div>
+</div>
+</section>
+
+<section id="kontak">
+<div class="contact">
+<a class="contact-btn whatsapp" href="https://wa.me/62895417880954" target="_blank" rel="noopener">
+<span class="contact-icon">💬</span>
+<span>WhatsApp<br><small>0895417880954</small></span>
+</a>
+
+<a class="contact-btn instagram" href="https://instagram.com/Ranashop_3" target="_blank" rel="noopener">
+<span class="contact-icon">📸</span>
+<span>Instagram<br><small>@Ranashop_3</small></span>
+</a>
+</div>
+</section>
+
+<section class="section" id="game">
+<div class="section-title">
+<h2>🎮 Pilih Game</h2>
+<p>Pilih game yang ingin kamu top up</p>
+</div>
+
+<div class="games">
+
+<div class="game-card">
+<div class="game-icon">💎</div>
+<h3>Mobile Legends</h3>
+<p>Top Up Diamond Mobile Legends</p>
+<a class="game-btn" href="https://wa.me/62895417880954?text=Halo%20RANA%20SHOP%2C%20saya%20ingin%20top%20up%20Mobile%20Legends." target="_blank">TOP UP SEKARANG</a>
+</div>
+
+<div class="game-card">
+<div class="game-icon">🔥</div>
+<h3>Free Fire</h3>
+<p>Top Up Diamond Free Fire</p>
+<a class="game-btn" href="https://wa.me/62895417880954?text=Halo%20RANA%20SHOP%2C%20saya%20ingin%20top%20up%20Free%20Fire." target="_blank">TOP UP SEKARANG</a>
+</div>
+
+<div class="game-card">
+<div class="game-icon">🎯</div>
+<h3>PUBG Mobile</h3>
+<p>Top Up UC PUBG Mobile</p>
+<a class="game-btn" href="https://wa.me/62895417880954?text=Halo%20RANA%20SHOP%2C%20saya%20ingin%20top%20up%20PUBG%20Mobile." target="_blank">TOP UP SEKARANG</a>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="section-title"><h2>⭐ Kenapa RANA SHOP?</h2></div>
+
+<div class="features">
+<div class="feature"><div class="feature-icon">⚡</div><h3>Proses Cepat</h3><p>Pesanan diproses secepat mungkin.</p></div>
+<div class="feature"><div class="feature-icon">🛡️</div><h3>Aman</h3><p>Data digunakan untuk proses top up.</p></div>
+<div class="feature"><div class="feature-icon">💰</div><h3>Harga Bersahabat</h3><p>Pilihan nominal sesuai kebutuhan.</p></div>
+<div class="feature"><div class="feature-icon">📱</div><h3>Order Mudah</h3><p>Hubungi admin melalui WhatsApp.</p></div>
+</div>
+</section>
+
+<section class="cta">
+<h2>🚀 Mau Top Up Sekarang?</h2>
+<p>Hubungi RANA SHOP melalui WhatsApp untuk melakukan pemesanan.</p>
+<a class="cta-btn" href="https://wa.me/62895417880954?text=Halo%20RANA%20SHOP%2C%20saya%20ingin%20melakukan%20top%20up." target="_blank">💬 CHAT WHATSAPP</a>
+</section>
+
+<footer>
+<div class="footer-logo">RANA <span>SHOP</span></div>
+<p>Top Up Game Cepat, Aman & Terpercaya</p>
+<div class="footer-contact">
+<a href="https://wa.me/62895417880954" target="_blank">WhatsApp: 0895417880954</a><br>
+<a href="https://instagram.com/Ranashop_3" target="_blank">Instagram: @Ranashop_3</a>
+</div>
+<p style="margin-top:20px;">© 2026 RANA SHOP. All Rights Reserved.</p>
+</footer>
+
+<script>
+let currentBanner=0;
+const track=document.getElementById("bannerTrack");
+const dots=document.querySelectorAll(".banner-dot");
+const totalBanner=4;
+
+function goBanner(index){
+currentBanner=index;
+track.style.transform="translateX(-"+(index*100)+"%)";
+dots.forEach((dot,i)=>dot.classList.toggle("active",i===currentBanner));
+}
+
+function prevBanner(){
+currentBanner--;
+if(currentBanner<0)currentBanner=totalBanner-1;
+goBanner(currentBanner);
+}
+
+function nextBanner(){
+currentBanner++;
+if(currentBanner>=totalBanner)currentBanner=0;
+goBanner(currentBanner);
+}
+
+setInterval(nextBanner,5000);
+
+let touchStart=0;
+let touchEnd=0;
+
+track.addEventListener("touchstart",e=>{
+touchStart=e.changedTouches[0].screenX;
+},{passive:true});
+
+track.addEventListener("touchend",e=>{
+touchEnd=e.changedTouches[0].screenX;
+const distance=touchStart-touchEnd;
+if(Math.abs(distance)>50){
+if(distance>0)nextBanner();
+else prevBanner();
+}
+},{passive:true});
+</script>
+
+</body>
+</html>
