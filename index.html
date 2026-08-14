@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#030913">
+<title>RANA SHOP — Top Up Game</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#02070e;color:#f4f8ff;font-family:Arial,Helvetica,sans-serif}
+body{min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}
+.wrap{width:min(1120px,calc(100% - 18px));margin:auto}
+header{height:72px;display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:9px;min-width:235px;text-decoration:none;color:#fff}
+.logoMark{width:46px;height:46px;border-radius:12px;background:linear-gradient(145deg,#102944,#06101d);display:grid;place-items:center;border:1px solid #21435f;box-shadow:inset 0 0 20px #0879bd33}
+.logoMark svg{width:36px}.logo b{font-size:23px;letter-spacing:-.5px}.logo i{color:#04baff;font-style:normal}.logo small{display:block;color:#91a6bb;font-size:9px;letter-spacing:1.4px;margin-top:2px}
+.search{height:44px;flex:1;display:flex;align-items:center;border:1px solid #233a52;background:#08121e;border-radius:12px;padding:0 13px;box-shadow:inset 0 0 20px #0005}.search input{width:100%;border:0;outline:0;background:transparent;color:#fff;font-size:13px}.search span{font-size:22px;color:#b6c6d6}
+.currency,.hamb{height:44px;border:1px solid #29435d;background:#08121e;border-radius:12px;color:#fff;padding:0 13px}.hamb{font-size:22px}
+.hero{position:relative;height:315px;border:1px solid #23425f;border-radius:16px;overflow:hidden;background:#071524}
+.heroArt{position:absolute;inset:0}
+.heroShade{position:absolute;inset:0;background:linear-gradient(90deg,#02070edc 0%,#02070eaa 37%,#02070e22 73%,#02070e66 100%)}
+.heroText{position:absolute;left:5%;top:50%;transform:translateY(-50%);z-index:2}
+.heroText .mini{color:#09bcff;font-weight:800;font-size:14px;letter-spacing:1px}
+.heroText h1{font-size:42px;line-height:.96;margin:9px 0 12px;letter-spacing:-1px}
+.heroText h1 em{color:#06c0ff;font-style:italic}.heroText p{font-size:13px;color:#c5d2df;margin:0 0 15px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{padding:7px 10px;border-radius:9px;border:1px solid #31516d;background:#071827d9;font-size:10px;color:#dce8f3}
+h2{font-size:18px;margin:18px 0 10px}.games{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.game{border:1px solid #263f57;background:#071522;border-radius:11px;overflow:hidden;padding:0 0 8px;color:#fff;text-align:left}.game:hover,.game.active{border-color:#00b9ff;box-shadow:0 0 0 1px #00b9ff55}.gameArt{height:142px;display:block}.game span{display:block;text-align:center;font-size:11px;font-weight:700;margin-top:7px}
+.panel{margin-top:9px;border:1px solid #20394f;background:#04111d;border-radius:14px;padding:7px}.tabs{display:flex;gap:4px}.tabs button{flex:1;height:42px;border:0;border-radius:8px;background:#071c2e;color:#a8b8c9;font-weight:800;font-size:13px}.tabs .active{background:#078fe6;color:#fff}
+.formgrid{display:grid;grid-template-columns:240px 1fr 280px;gap:7px;margin-top:7px}.card{background:#071827;border:1px solid #1e354c;border-radius:10px;padding:11px;margin-bottom:7px}.card h3{font-size:13px;margin:0 0 11px}.num{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:6px;background:#079cf0;margin-right:6px}
+label{font-size:11px;display:block;margin:9px 0 5px}input,select{width:100%;height:40px;border:1px solid #29425a;background:#091725;color:#fff;border-radius:8px;padding:0 10px;font-size:11px;outline:none}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.prod{min-height:104px;background:#081a2b;border:1px solid #2a435b;border-radius:9px;color:#fff;padding:4px}.prod:hover,.prod.active{border-color:#00baff}.diamond{height:55px;display:block}.prod strong,.prod small{display:block;font-size:10px}.prod small{font-size:11px;color:#fff;margin-top:4px}
+.counter{display:grid;grid-template-columns:42px 1fr 42px;height:40px;border:1px solid #29425a;border-radius:8px;overflow:hidden}.counter button{border:0;background:#091827;color:#fff;font-size:20px}.counter b{display:grid;place-items:center}
+.pay{width:100%;display:flex;align-items:center;gap:9px;margin:5px 0;padding:6px;background:#081a2b;border:1px solid #2a435b;border-radius:9px;color:#fff;text-align:left}.pay:hover,.pay.active{border-color:#00baff}.payIcon{width:54px;height:34px;flex:none}.pay b{font-size:11px}.pay small{display:block;color:#9eafc1;font-size:8px;font-weight:400;line-height:1.35}.hint,.safe{font-size:9px;color:#8194a8;text-align:center}
+.summary{margin-top:8px;border:1px solid #20384f;border-radius:13px;background:#061423;padding:12px;display:grid;grid-template-columns:1fr 280px;gap:15px;align-items:center}.summaryGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.summary small{display:block;color:#8192a5;font-size:9px}.summary b{font-size:11px}.total{font-size:20px;color:#ff8b00}.order{height:55px;border:0;border-radius:11px;background:linear-gradient(135deg,#ff8b00,#ff6d00);color:#fff;font-weight:900;font-size:14px}.order small{display:block;font-size:9px;font-weight:500;margin-top:2px}.info{display:none;padding:25px 8px;color:#aebfd0;font-size:12px;line-height:1.6}
+@media(max-width:900px){.games{grid-template-columns:repeat(4,1fr)}.formgrid{grid-template-columns:1fr 1.5fr}.right{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.right .card{margin:0}.summary{grid-template-columns:1fr}}
+@media(max-width:600px){.wrap{width:calc(100% - 12px)}header{height:auto;padding:7px 0;flex-wrap:wrap}.logo{min-width:auto}.logo small{display:none}.search{order:3;flex-basis:100%;height:40px}.currency{font-size:11px;padding:0 9px}.hamb{padding:0 10px}.hero{height:205px}.heroText{left:6%;right:4%}.heroText h1{font-size:27px}.heroText p{font-size:10px}.heroText .mini{font-size:11px}.badge{font-size:8px;padding:6px 7px}.games{grid-template-columns:repeat(2,1fr);gap:7px}.gameArt{height:155px}.formgrid{display:block}.right{display:block}.products{grid-template-columns:repeat(2,1fr)}.summaryGrid{grid-template-columns:1fr 1fr}.panel{padding:5px}}
+
+.gameArt{height:155px!important;background:#02070e;display:flex;align-items:center;justify-content:center;overflow:hidden}.gameArt img{width:100%;height:100%;object-fit:contain;display:block}.gameArt.fallback:after{content:attr(data-name);color:#8da2b8;font-weight:800;font-size:14px;letter-spacing:1px}.heroArt{background:#061321}.heroReal{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;opacity:.82}.heroReal img{width:100%;height:100%;object-fit:cover;min-width:0}.heroShade{background:linear-gradient(90deg,#02070ef0 0%,#02070eaa 43%,#02070e55 100%)!important}
+@media(max-width:600px){.gameArt{height:155px!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="logo" href="#">
+  <span class="logoMark"><svg viewBox="0 0 100 100"><path d="M13 73 31 18h23l-9 25 29-25h15L67 49l18 33H61L45 57l-8 25H13z" fill="#fff"/><path d="m31 18 23 0-9 25 29-25h15L67 49 49 37z" fill="#08b8ff"/></svg></span>
+  <span><b>RANA <i>SHOP</i></b><small>TOP UP GAME & VOUCHER</small></span>
+</a>
+<div class="search"><input id="search" placeholder="Cari game atau produk..."><span>⌕</span></div>
+<button class="currency">🇮🇩 &nbsp;IDR⌄</button><button class="hamb">☰</button>
+</header>
+
+<section class="hero">
+<div class="heroArt"><div class="heroReal">
+<img src="https://d2ya09u1z2qlgr.cloudfront.net/1999/cara-cek-umur-akun-ml.webp" alt="Mobile Legends" referrerpolicy="no-referrer">
+<img src="https://conteudo.imguol.com.br/c/parceiros/e6/2020/01/24/free-fire-ganha-primeiro-calendario-nacional-de-competicoes-1579903032225_v2_3x4.jpg" alt="Free Fire" referrerpolicy="no-referrer">
+<img src="https://www.sukaon.com/wp-content/uploads/2022/07/PUBG-MOBILE-KV3-1.jpeg" alt="PUBG Mobile" referrerpolicy="no-referrer">
+</div></div><div class="heroShade"></div>
+<div class="heroText"><div class="mini">RANA SHOP</div><h1>TOP UP GAME<br><em>CEPAT & AMAN</em></h1><p>Harga bersahabat • Proses cepat • Layanan 24/7</p><div class="badges"><span class="badge">◷ PROSES CEPAT</span><span class="badge">♢ AMAN & TERPERCAYA</span><span class="badge">◷ LAYANAN 24/7</span></div></div>
+</section>
+
+<h2>🔥 POPULER SEKARANG</h2>
+<section class="games" id="games"></section>
+
+<section class="panel">
+<div class="tabs"><button class="active" id="tab1">Transaksi</button><button id="tab2">Keterangan</button></div>
+<div class="formgrid" id="trans">
+<section class="card"><h3><span class="num">1</span>Data Akun</h3><label>User ID</label><input id="uid" placeholder="Masukkan User ID"><label>Server</label><select id="server"><option value="">Pilih Server</option><option>Indonesia</option><option>Asia</option><option>Europe</option><option>America</option></select></section>
+<section class="card"><h3><span class="num">2</span>Pilih Nominal Diamond</h3><div class="products" id="products"></div></section>
+<section class="right">
+<section class="card"><h3><span class="num">3</span>Jumlah Pembelian</h3><div class="counter"><button id="minus">−</button><b id="qty">1</b><button id="plus">+</button></div></section>
+<section class="card"><h3><span class="num">4</span>Pilih Pembayaran</h3>
+<button class="pay" data-pay="SeaBank"><span class="payIcon"><svg viewBox="0 0 100 60"><rect width="100" height="60" rx="12" fill="#ff7600"/><circle cx="50" cy="30" r="20" fill="#fff"/><text x="50" y="40" text-anchor="middle" font-size="26" font-weight="900" fill="#ff7600">S</text></svg></span><span><b>SeaBank</b><small>A/N RADYAN MAHESA PRAYOGA<br>901355791626</small></span></button>
+<button class="pay" data-pay="BCA"><span class="payIcon"><svg viewBox="0 0 100 60"><rect width="100" height="60" rx="12" fill="#eaf4ff"/><text x="50" y="40" text-anchor="middle" font-size="25" font-weight="900" fill="#0878ce">BCA</text></svg></span><span><b>BCA</b><small>A/N ANANDA FITRIA<br>6365167773</small></span></button>
+<button class="pay" data-pay="DANA"><span class="payIcon"><svg viewBox="0 0 100 60"><rect width="100" height="60" rx="12" fill="#eaf4ff"/><text x="50" y="39" text-anchor="middle" font-size="22" font-weight="900" fill="#0878ce">DANA</text></svg></span><span><b>DANA</b><small>A/N ANANDA FITRIA<br>08995239282</small></span></button>
+<p class="hint">Sertakan bukti transfer setelah pembayaran.</p></section>
+<section class="card"><h3><span class="num">5</span>Detail Kontak</h3><label>Nama Lengkap</label><input id="name" placeholder="Masukkan nama lengkap"><label>WhatsApp</label><input id="phone" placeholder="08xxxxxxxxxx"></section>
+</section></div>
+<div class="info" id="info">Pilih game, masukkan User ID, nominal, pembayaran, dan kontak. Setelah menekan tombol pesan, detail pesanan akan dikirim ke WhatsApp RANA SHOP.</div>
+</section>
+
+<section class="summary"><div class="summaryGrid"><span><small>Produk</small><b id="sumGame">Mobile Legends</b></span><span><small>Nominal</small><b id="sumNom">-</b></span><span><small>Jumlah</small><b id="sumQty">-</b></span><span><small>Total Harga</small><b class="total" id="sumTotal">Rp 0</b></span></div><button class="order" id="order">🟢 PESAN SEKARANG<small>via WhatsApp</small></button></section>
+<p class="safe">🛡 Data aman dan hanya digunakan untuk kebutuhan transaksi.</p>
+</div>
+
+<script>
+const games=[
+["Mobile Legends","https://d2ya09u1z2qlgr.cloudfront.net/1999/cara-cek-umur-akun-ml.webp"],
+["Free Fire","https://conteudo.imguol.com.br/c/parceiros/e6/2020/01/24/free-fire-ganha-primeiro-calendario-nacional-de-competicoes-1579903032225_v2_3x4.jpg"],
+["Free Fire MAX","https://ff.garena.in.th/assets/images/og-image.jpg"],
+["PUBG Mobile","https://www.sukaon.com/wp-content/uploads/2022/07/PUBG-MOBILE-KV3-1.jpeg"],
+["Valorant","https://japannext.fr/cdn/shop/articles/Valorant-Wallpaper-Boys-Rainbow-Display_a94881d6-c6a5-4245-9da6-8f07c55a48d1.jpg?v=1760444880"],
+["Genshin Impact","https://simhost.org/uploads/posts/2021-08/1628163175_genshin-impact.jpg"],
+["eFootball","https://www.konami.com/efootball/images/common/ogp.jpg"]
+];
+const vals=[[5,1500],[11,2500],[19,4000],[28,6000],[56,12000],[86,18000],[172,36000],[257,54000],[344,72000],[514,106000]];
+let state={game:"Mobile Legends",name:"",price:0,qty:1,pay:""};
+
+function art(g){
+return `<div class="gameArt"><img src="${g[1]}" alt="${g[0]}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('fallback');this.parentElement.dataset.name='${g[0]}'"></div>`;
+}
+function diamond(n){return `<svg class="diamond" viewBox="0 0 160 70" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="d${n}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eaffff"/><stop offset=".3" stop-color="#4ed7ff"/><stop offset=".7" stop-color="#1769ff"/><stop offset="1" stop-color="#071b88"/></linearGradient></defs><g transform="translate(80 4)"><path d="M-38 18 0 0 38 18 18 57h-36z" fill="url(#d${n})" stroke="#c9f7ff" stroke-width="2"/><path d="M-38 18 0 32 38 18M0 0 0 32 18 57M0 32-18 57" fill="none" stroke="#b9efff" stroke-width="1.5"/></g></svg>`}
+function rup(n){return "Rp "+n.toLocaleString("id-ID")}
+function renderGames(){document.querySelector("#games").innerHTML=games.map((g,i)=>`<button class="game ${i===0?"active":""}" data-game="${g[0]}">${art(g)}<span>${g[0]}</span></button>`).join("");document.querySelectorAll(".game").forEach(b=>b.onclick=()=>{document.querySelectorAll(".game").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.game=b.dataset.game;update()})}
+function renderProducts(){document.querySelector("#products").innerHTML=vals.map(v=>`<button class="prod" data-name="${v[0]} Diamond" data-price="${v[1]}">${diamond(v[0])}<strong>${v[0]} Diamond</strong><small>${rup(v[1])}</small></button>`).join("");document.querySelectorAll(".prod").forEach(b=>b.onclick=()=>{document.querySelectorAll(".prod").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.name=b.dataset.name;state.price=+b.dataset.price;update()})}
+function update(){sumGame.textContent=state.game;sumNom.textContent=state.name||"-";sumQty.textContent=state.name?state.qty:"-";sumTotal.textContent=rup(state.price*state.qty);qty.textContent=state.qty}
+renderGames();renderProducts();update();
+minus.onclick=()=>{state.qty=Math.max(1,state.qty-1);update()};plus.onclick=()=>{state.qty=Math.min(99,state.qty+1);update()};
+document.querySelectorAll(".pay").forEach(b=>b.onclick=()=>{document.querySelectorAll(".pay").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.pay=b.dataset.pay});
+tab1.onclick=()=>{tab1.classList.add("active");tab2.classList.remove("active");trans.style.display="grid";info.style.display="none"};
+tab2.onclick=()=>{tab2.classList.add("active");tab1.classList.remove("active");trans.style.display="none";info.style.display="block"};
+search.oninput=()=>{let q=search.value.toLowerCase();document.querySelectorAll(".game").forEach(x=>x.style.display=!q||x.dataset.game.toLowerCase().includes(q)?"":"none")};
+order.onclick=()=>{let id=uid.value.trim(),sv=server.value,nm=name.value.trim(),ph=phone.value.trim();if(!id||!state.name||!state.pay||!nm||!ph){alert("Lengkapi data akun, nominal, pembayaran, dan kontak.");return}let msg=`Halo RANA SHOP,%0A%0AGame: ${state.game}%0AUser ID: ${id}%0AServer: ${sv||"-"}%0ANominal: ${state.name}%0AJumlah: ${state.qty}%0APembayaran: ${state.pay}%0ANama: ${nm}%0AWhatsApp: ${ph}%0ATotal: ${rup(state.price*state.qty)}%0A%0ASaya akan mengirim bukti transfer setelah pembayaran.`;window.open("https://wa.me/62895417880954?text="+msg,"_blank")};
+</script>
+<!-- Game artwork is loaded from public web sources; trademarks/artwork belong to their respective owners. -->\n</body>
+</html>
