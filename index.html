@@ -2,159 +2,573 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>RanaShop - Top Up Game Murah & Terpercaya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#070b14">
+  <title>RanaShop — Top Up Game</title>
+
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
-  <header class="header">
-    <div class="container header-inner">
-      <div class="logo">
-        <img src="diamond.jpg" alt="RanaShop" class="logo-img">
-        <span>Rana<span class="accent">Shop</span></span>
+<header class="topbar">
+  <div class="wrap nav">
+
+    <a class="brand" href="#" onclick="showHome(); return false;">
+      <img src="diamond.jpg" alt="RanaShop">
+      <span>Rana<span>Shop</span></span>
+    </a>
+
+    <nav>
+      <a href="#games">Game</a>
+      <a href="#benefits">Keunggulan</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a
+      class="admin-btn"
+      href="https://wa.me/62895417880954"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp"></i>
+      Chat Admin
+    </a>
+
+  </div>
+</header>
+
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="wrap hero-grid">
+
+    <div class="hero-copy">
+
+      <div class="eyebrow">
+        <span></span>
+        TOP UP GAME TERPERCAYA
       </div>
-      <a href="https://wa.me/62895417880954" class="btn-wa" target="_blank">
-        <i class="fab fa-whatsapp"></i> Chat Admin
-      </a>
+
+      <h1>
+        Main terus.<br>
+        <em>Top up tanpa ribet.</em>
+      </h1>
+
+      <p>
+        Top up game favorit dengan proses cepat,
+        tampilan simpel, dan bantuan admin kapan saja.
+      </p>
+
+      <div class="hero-actions">
+
+        <a class="primary-btn" href="#games">
+          Mulai Top Up
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <a
+          class="ghost-btn"
+          href="https://wa.me/62895417880954"
+          target="_blank"
+        >
+          <i class="fab fa-whatsapp"></i>
+          Tanya Admin
+        </a>
+
+      </div>
+
+      <div class="trust">
+
+        <span>
+          <i class="fa-solid fa-bolt"></i>
+          Proses cepat
+        </span>
+
+        <span>
+          <i class="fa-solid fa-shield-halved"></i>
+          Aman
+        </span>
+
+        <span>
+          <i class="fa-solid fa-headset"></i>
+          Admin siap bantu
+        </span>
+
+      </div>
+
     </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Top Up Game <span>Murah</span> & <span>Cepat</span></h1>
-      <p>Proses instan • Harga bersaing • Layanan 24 Jam</p>
+
+    <div class="hero-art">
+
+      <div class="orb"></div>
+
+      <div class="art-card art-main">
+        <img src="mlbb.jpg" alt="Mobile Legends">
+
+        <div class="art-overlay">
+          <b>Mobile Legends</b>
+          <small>Diamond • Instant</small>
+        </div>
+      </div>
+
+      <div class="mini-card mini-one">
+        <img src="freefire.jpg" alt="Free Fire">
+
+        <span>
+          Free Fire<br>
+          <b>Diamond</b>
+        </span>
+      </div>
+
+      <div class="mini-card mini-two">
+        <img src="pubg.jpg" alt="PUBG Mobile">
+
+        <span>
+          PUBG Mobile<br>
+          <b>UC</b>
+        </span>
+      </div>
+
     </div>
-  </section>
 
-  <section class="games" id="games">
-    <div class="container">
-      <h2 class="section-title">🔥 Pilih Game</h2>
-      <div class="game-grid">
-        <div class="game-card" onclick="selectGame('Mobile Legends', 'mlbb')">
-          <img src="mlbb.jpg" alt="Mobile Legends">
-          <div class="game-info"><h3>Mobile Legends</h3><span>Moonton</span></div>
-        </div>
-        <div class="game-card" onclick="selectGame('Free Fire', 'freefire')">
-          <img src="freefire.jpg" alt="Free Fire">
-          <div class="game-info"><h3>Free Fire</h3><span>Garena</span></div>
-        </div>
-        <div class="game-card" onclick="selectGame('PUBG Mobile', 'pubg')">
-          <img src="pubg.jpg" alt="PUBG Mobile">
-          <div class="game-info"><h3>PUBG Mobile</h3><span>Tencent</span></div>
-        </div>
-        <div class="game-card" onclick="selectGame('Genshin Impact', 'genshin')">
-          <img src="genshin.jpg" alt="Genshin Impact">
-          <div class="game-info"><h3>Genshin Impact</h3><span>HoYoverse</span></div>
-        </div>
-        <div class="game-card" onclick="selectGame('Honor of Kings', 'hok')">
-          <img src="hok.jpg" alt="Honor of Kings">
-          <div class="game-info"><h3>Honor of Kings</h3><span>Tencent</span></div>
-        </div>
-        <div class="game-card" onclick="selectGame('Roblox', 'roblox')">
-          <img src="roblox.png" alt="Roblox">
-          <div class="game-info"><h3>Roblox</h3><span>Roblox Corp</span></div>
-        </div>
-      </div>
+  </div>
+
+</section>
+
+
+<!-- STATS -->
+<section class="stats">
+
+  <div class="wrap stats-grid">
+
+    <div>
+      <b>24/7</b>
+      <span>Layanan</span>
     </div>
-  </section>
 
-  <section class="order-section" id="orderSection" style="display:none;">
-    <div class="container">
-      <div class="order-header">
-        <button class="back-btn" onclick="backToGames()"><i class="fas fa-arrow-left"></i> Kembali</button>
-        <h2 id="selectedGameTitle">Order</h2>
-      </div>
-
-      <div class="order-card">
-        <div class="step-header"><span class="step-num">1</span><h3>Data Akun</h3></div>
-        <div class="form-group">
-          <label>User ID / Player ID</label>
-          <input type="text" id="playerId" placeholder="Masukkan ID kamu">
-        </div>
-        <div class="form-group">
-          <label>Server / Zone ID</label>
-          <input type="text" id="serverId" placeholder="Contoh: 1234 atau Indonesia">
-        </div>
-      </div>
-
-      <div class="order-card">
-        <div class="step-header"><span class="step-num">2</span><h3>Pilih Nominal</h3></div>
-        <div class="nominal-grid" id="nominalGrid"></div>
-      </div>
-
-      <div class="order-card">
-        <div class="step-header"><span class="step-num">3</span><h3>Jumlah Pembelian</h3></div>
-        <div class="qty-control">
-          <button type="button" onclick="changeQty(-1)">−</button>
-          <input type="number" id="qty" value="1" min="1" max="99" readonly>
-          <button type="button" onclick="changeQty(1)">+</button>
-        </div>
-      </div>
-
-      <div class="order-card">
-        <div class="step-header"><span class="step-num">4</span><h3>Pilih Pembayaran</h3></div>
-        <div class="payment-list">
-          <label class="payment-item">
-            <input type="radio" name="payment" value="SeaBank" checked>
-            <div class="payment-content">
-              <img src="seabank.png" alt="SeaBank">
-              <div><strong>SeaBank</strong><small>A/N RADYAN MAHESA PRAYOGA<br>901355791626</small></div>
-            </div>
-          </label>
-          <label class="payment-item">
-            <input type="radio" name="payment" value="BCA">
-            <div class="payment-content">
-              <img src="bca.png" alt="BCA">
-              <div><strong>BCA</strong><small>A/N ANANDA FITRIA<br>6365167773</small></div>
-            </div>
-          </label>
-          <label class="payment-item">
-            <input type="radio" name="payment" value="DANA">
-            <div class="payment-content">
-              <img src="dana.png" alt="DANA">
-              <div><strong>DANA</strong><small>A/N ANANDA FITRIA<br>08995239282</small></div>
-            </div>
-          </label>
-        </div>
-        <p class="payment-note">⚠️ Sertakan bukti transfer setelah pembayaran</p>
-      </div>
-
-      <div class="order-card">
-        <div class="step-header"><span class="step-num">5</span><h3>Detail Kontak</h3></div>
-        <div class="form-group">
-          <label>Nama Lengkap</label>
-          <input type="text" id="customerName" placeholder="Masukkan nama lengkap">
-        </div>
-        <div class="form-group">
-          <label>Nomor WhatsApp</label>
-          <input type="tel" id="customerWa" placeholder="08xxxxxxxxxx">
-        </div>
-      </div>
-
-      <div class="order-summary">
-        <div class="summary-row"><span>Produk</span><strong id="summaryGame">-</strong></div>
-        <div class="summary-row"><span>Nominal</span><strong id="summaryNominal">-</strong></div>
-        <div class="summary-row"><span>Jumlah</span><strong id="summaryQty">1</strong></div>
-        <div class="summary-row total"><span>Total Harga</span><strong id="summaryTotal">Rp 0</strong></div>
-        <button class="btn-order" onclick="submitOrder()"><i class="fab fa-whatsapp"></i> PESAN SEKARANG</button>
-        <p class="secure-note">🔒 Data aman dan hanya digunakan untuk transaksi</p>
-      </div>
+    <div>
+      <b>10+</b>
+      <span>Pilihan Game</span>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 RanaShop • Top Up Game Murah & Terpercaya</p>
-      <p>WhatsApp: 0895-4178-80954</p>
+    <div>
+      <b>100%</b>
+      <span>Respons Admin</span>
     </div>
-  </footer>
 
-  <a href="https://wa.me/62895417880954" class="float-wa" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+    <div>
+      <b>Fast</b>
+      <span>Proses</span>
+    </div>
 
-  <script src="script.js"></script>
+  </div>
+
+</section>
+
+
+<!-- GAMES -->
+<section id="games" class="section">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div>
+        <span class="kicker">KATALOG</span>
+        <h2>Pilih game favoritmu</h2>
+      </div>
+
+      <span class="count">
+        Top up tersedia
+      </span>
+
+    </div>
+
+    <div class="game-grid" id="gameGrid"></div>
+
+  </div>
+
+</section>
+
+
+<!-- BENEFITS -->
+<section id="benefits" class="section benefits">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div>
+        <span class="kicker">KENAPA KAMI?</span>
+        <h2>Dibuat simpel untuk pembeli</h2>
+      </div>
+
+    </div>
+
+
+    <div class="benefit-grid">
+
+      <article>
+        <i class="fa-solid fa-bolt"></i>
+
+        <h3>Proses cepat</h3>
+
+        <p>
+          Pesanan langsung diteruskan
+          ke admin melalui WhatsApp.
+        </p>
+      </article>
+
+
+      <article>
+        <i class="fa-solid fa-lock"></i>
+
+        <h3>Data seperlunya</h3>
+
+        <p>
+          Form hanya meminta informasi
+          yang dibutuhkan untuk transaksi.
+        </p>
+      </article>
+
+
+      <article>
+        <i class="fa-solid fa-tags"></i>
+
+        <h3>Nominal jelas</h3>
+
+        <p>
+          Pilih produk dan harga
+          sebelum mengirim pesanan.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+<section id="faq" class="section faq">
+
+  <div class="wrap narrow">
+
+    <div class="section-head">
+
+      <div>
+        <span class="kicker">FAQ</span>
+        <h2>Pertanyaan umum</h2>
+      </div>
+
+    </div>
+
+
+    <details>
+      <summary>
+        Bagaimana cara melakukan top up?
+      </summary>
+
+      <p>
+        Pilih game, isi ID, pilih nominal,
+        lalu lanjutkan pesanan melalui WhatsApp admin.
+      </p>
+    </details>
+
+
+    <details>
+      <summary>
+        Apakah pembayaran aman?
+      </summary>
+
+      <p>
+        Gunakan rekening atau metode pembayaran
+        yang ditampilkan pada halaman checkout
+        dan konfirmasi kepada admin.
+      </p>
+    </details>
+
+
+    <details>
+      <summary>
+        Berapa lama prosesnya?
+      </summary>
+
+      <p>
+        Waktu proses bergantung pada game dan antrean.
+        Admin akan memberi informasi setelah pesanan diterima.
+      </p>
+    </details>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+  <div class="wrap cta-inner">
+
+    <div>
+
+      <span class="kicker">
+        BUTUH BANTUAN?
+      </span>
+
+      <h2>
+        Chat admin sebelum order.
+      </h2>
+
+      <p>
+        Admin siap membantu kalau kamu bingung
+        dengan ID, nominal, atau pembayaran.
+      </p>
+
+    </div>
+
+    <a
+      class="primary-btn"
+      href="https://wa.me/62895417880954"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp"></i>
+      Chat WhatsApp
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="wrap foot">
+
+    <div class="brand">
+
+      <img src="diamond.jpg" alt="RanaShop">
+
+      <span>
+        Rana<span>Shop</span>
+      </span>
+
+    </div>
+
+    <p>
+      © 2026 RanaShop • Top up game
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- ORDER MODAL -->
+<div class="modal" id="orderModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeOrder()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+
+    <div class="modal-title">
+
+      <span class="product-icon" id="modalIcon">
+        🎮
+      </span>
+
+      <div>
+
+        <small>ORDER TOP UP</small>
+
+        <h2 id="modalGame">
+          Game
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step active">
+        1
+        <span>Data</span>
+      </div>
+
+      <i></i>
+
+      <div class="step">
+        2
+        <span>Nominal</span>
+      </div>
+
+      <i></i>
+
+      <div class="step">
+        3
+        <span>Order</span>
+      </div>
+
+    </div>
+
+
+    <label>
+      User ID / Player ID
+
+      <input
+        id="playerId"
+        type="text"
+        placeholder="Masukkan ID kamu"
+      >
+    </label>
+
+
+    <label>
+      Server / Zone ID
+      <small>(opsional)</small>
+
+      <input
+        id="serverId"
+        type="text"
+        placeholder="Contoh: 1234"
+      >
+    </label>
+
+
+    <h3 class="sub">
+      Pilih Nominal
+    </h3>
+
+    <div
+      class="nominals"
+      id="nominals"
+    ></div>
+
+
+    <div class="qty">
+
+      <span>
+        Jumlah pembelian
+      </span>
+
+      <div>
+
+        <button onclick="changeQty(-1)">
+          −
+        </button>
+
+        <b id="qty">
+          1
+        </b>
+
+        <button onclick="changeQty(1)">
+          +
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="checkout">
+
+      <div>
+        <span>Produk</span>
+        <b id="sumProduct">-</b>
+      </div>
+
+      <div>
+        <span>Jumlah</span>
+        <b id="sumQty">1</b>
+      </div>
+
+      <div class="total">
+        <span>Total</span>
+        <b id="sumTotal">
+          Rp 0
+        </b>
+      </div>
+
+    </div>
+
+
+    <label>
+      Nama Lengkap
+
+      <input
+        id="customerName"
+        type="text"
+        placeholder="Nama pembeli"
+      >
+    </label>
+
+
+    <label>
+      Nomor WhatsApp
+
+      <input
+        id="customerWa"
+        type="tel"
+        placeholder="08xxxxxxxxxx"
+      >
+    </label>
+
+
+    <button
+      class="order-btn"
+      onclick="submitOrder()"
+    >
+      Lanjut ke WhatsApp
+      <i class="fab fa-whatsapp"></i>
+    </button>
+
+
+    <p class="modal-note">
+
+      <i class="fa-solid fa-shield-halved"></i>
+
+      Detail order akan dikirim
+      ke WhatsApp admin.
+
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- FLOATING WHATSAPP -->
+<a
+  class="float"
+  href="https://wa.me/62895417880954"
+  target="_blank"
+>
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<script src="script.js"></script>
+
 </body>
   </html>
