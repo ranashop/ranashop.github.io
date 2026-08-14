@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>RanaShop - Top Up Game Murah & Terpercaya</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <img src="images/diamond.jpg" alt="RanaShop" class="logo-img">
+        <span>Rana<span class="accent">Shop</span></span>
+      </div>
+      <a href="https://wa.me/62895417880954" class="btn-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat Admin
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Top Up Game <span>Murah</span> & <span>Cepat</span></h1>
+      <p>Proses instan • Harga bersaing • Layanan 24 Jam</p>
+    </div>
+  </section>
+
+  <!-- Game List -->
+  <section class="games" id="games">
+    <div class="container">
+      <h2 class="section-title">🔥 Pilih Game</h2>
+      
+      <div class="game-grid">
+        <div class="game-card" onclick="selectGame('Mobile Legends', 'mlbb')">
+          <img src="images/mlbb.jpg" alt="Mobile Legends">
+          <div class="game-info">
+            <h3>Mobile Legends</h3>
+            <span>Moonton</span>
+          </div>
+        </div>
+
+        <div class="game-card" onclick="selectGame('Free Fire', 'freefire')">
+          <img src="images/freefire.jpg" alt="Free Fire">
+          <div class="game-info">
+            <h3>Free Fire</h3>
+            <span>Garena</span>
+          </div>
+        </div>
+
+        <div class="game-card" onclick="selectGame('PUBG Mobile', 'pubg')">
+          <img src="images/pubg.jpg" alt="PUBG Mobile">
+          <div class="game-info">
+            <h3>PUBG Mobile</h3>
+            <span>Tencent</span>
+          </div>
+        </div>
+
+        <div class="game-card" onclick="selectGame('Genshin Impact', 'genshin')">
+          <img src="images/genshin.jpg" alt="Genshin Impact">
+          <div class="game-info">
+            <h3>Genshin Impact</h3>
+            <span>HoYoverse</span>
+          </div>
+        </div>
+
+        <div class="game-card" onclick="selectGame('Honor of Kings', 'hok')">
+          <img src="images/hok.jpg" alt="Honor of Kings">
+          <div class="game-info">
+            <h3>Honor of Kings</h3>
+            <span>Tencent</span>
+          </div>
+        </div>
+
+        <div class="game-card" onclick="selectGame('Roblox', 'roblox')">
+          <img src="images/roblox.png" alt="Roblox">
+          <div class="game-info">
+            <h3>Roblox</h3>
+            <span>Roblox Corp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Section -->
+  <section class="order-section" id="orderSection" style="display:none;">
+    <div class="container">
+      <div class="order-header">
+        <button class="back-btn" onclick="backToGames()">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <h2 id="selectedGameTitle">Order</h2>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="order-card">
+        <div class="step-header">
+          <span class="step-num">1</span>
+          <h3>Data Akun</h3>
+        </div>
+        <div class="form-group">
+          <label>User ID / Player ID</label>
+          <input type="text" id="playerId" placeholder="Masukkan ID kamu">
+        </div>
+        <div class="form-group">
+          <label>Server / Zone ID</label>
+          <input type="text" id="serverId" placeholder="Contoh: 1234 atau Indonesia">
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="order-card">
+        <div class="step-header">
+          <span class="step-num">2</span>
+          <h3>Pilih Nominal</h3>
+        </div>
+        <div class="nominal-grid" id="nominalGrid"></div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="order-card">
+        <div class="step-header">
+          <span class="step-num">3</span>
+          <h3>Jumlah Pembelian</h3>
+        </div>
+        <div class="qty-control">
+          <button type="button" onclick="changeQty(-1)">−</button>
+          <input type="number" id="qty" value="1" min="1" max="99" readonly>
+          <button type="button" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="order-card">
+        <div class="step-header">
+          <span class="step-num">4</span>
+          <h3>Pilih Pembayaran</h3>
+        </div>
+        <div class="payment-list">
+          <label class="payment-item">
+            <input type="radio" name="payment" value="SeaBank" checked>
+            <div class="payment-content">
+              <img src="images/seabank.png" alt="SeaBank">
+              <div>
+                <strong>SeaBank</strong>
+                <small>A/N RADYAN MAHESA PRAYOGA<br>901355791626</small>
+              </div>
+            </div>
+          </label>
+          <label class="payment-item">
+            <input type="radio" name="payment" value="BCA">
+            <div class="payment-content">
+              <img src="images/bca.png" alt="BCA">
+              <div>
+                <strong>BCA</strong>
+                <small>A/N ANANDA FITRIA<br>6365167773</small>
+              </div>
+            </div>
+          </label>
+          <label class="payment-item">
+            <input type="radio" name="payment" value="DANA">
+            <div class="payment-content">
+              <img src="images/dana.png" alt="DANA">
+              <div>
+                <strong>DANA</strong>
+                <small>A/N ANANDA FITRIA<br>08995239282</small>
+              </div>
+            </div>
+          </label>
+        </div>
+        <p class="payment-note">⚠️ Sertakan bukti transfer setelah pembayaran</p>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="order-card">
+        <div class="step-header">
+          <span class="step-num">5</span>
+          <h3>Detail Kontak</h3>
+        </div>
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" id="customerName" placeholder="Masukkan nama lengkap">
+        </div>
+        <div class="form-group">
+          <label>Nomor WhatsApp</label>
+          <input type="tel" id="customerWa" placeholder="08xxxxxxxxxx">
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="order-summary">
+        <div class="summary-row">
+          <span>Produk</span>
+          <strong id="summaryGame">-</strong>
+        </div>
+        <div class="summary-row">
+          <span>Nominal</span>
+          <strong id="summaryNominal">-</strong>
+        </div>
+        <div class="summary-row">
+          <span>Jumlah</span>
+          <strong id="summaryQty">1</strong>
+        </div>
+        <div class="summary-row total">
+          <span>Total Harga</span>
+          <strong id="summaryTotal">Rp 0</strong>
+        </div>
+        <button class="btn-order" onclick="submitOrder()">
+          <i class="fab fa-whatsapp"></i> PESAN SEKARANG
+        </button>
+        <p class="secure-note">🔒 Data aman dan hanya digunakan untuk transaksi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 RanaShop • Top Up Game Murah & Terpercaya</p>
+      <p>WhatsApp: 0895-4178-80954</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/62895417880954" class="float-wa" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
