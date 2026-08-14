@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b12">
+<meta name="description" content="RANA SHOP - Top Up Game">
+<title>RANA SHOP | Top Up Game</title>
+<style>
+:root{
+ --bg:#070b12;--surface:#0d131d;--card:#111925;--card2:#0a1018;
+ --line:#202b39;--text:#f7f9fc;--muted:#8f9bab;--gold:#ffd21a;
+ --gold2:#ffb800;--green:#20d66b;--blue:#38bdf8;--danger:#ff6574
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% -20%,#182235 0,#070b12 38%);color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none}
+.container{width:min(1120px,calc(100% - 24px));margin:auto}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:50;background:#070b12e8;border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:1000;letter-spacing:.4px;color:var(--gold)}
+.logo span{color:var(--blue)}
+.navlinks{display:flex;gap:4px}
+.navlinks a{color:#d7dee8;font-size:12px;font-weight:800;padding:9px 11px;border-radius:8px}
+.navlinks a:hover{background:#141d29;color:#fff}
+
+/* HERO */
+.hero{text-align:center;padding:30px 0 18px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid #ffd21a35;border-radius:999px;background:#ffd21a09;color:var(--gold);font-size:10px;font-weight:900}
+.hero h1{font-size:clamp(31px,6vw,54px);line-height:1.03;margin:12px 0 8px;letter-spacing:-1.5px}
+.hero h1 span{color:var(--gold)}
+.hero p{margin:0;color:var(--muted);font-size:13px}
+
+/* BANNER */
+.banner{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#0b1017;box-shadow:0 18px 50px #0008}
+.track{display:flex;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.slide{min-width:100%}
+.slide img{width:100%;height:clamp(155px,29vw,305px);object-fit:cover;display:block}
+.banner-btn{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border:1px solid #ffffff22;border-radius:50%;background:#000b;color:#fff;font-size:25px;display:grid;place-items:center}
+.banner-btn:hover{background:#000e}
+.prev{left:11px}.next{right:11px}
+.dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px}
+.dot{width:7px;height:7px;padding:0;border:0;border-radius:20px;background:#ffffff66}
+.dot.active{width:21px;background:var(--gold)}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 28px}
+.contact a{display:flex;align-items:center;justify-content:center;gap:9px;color:#fff;border-radius:11px;padding:12px;font-size:12px;font-weight:900}
+.wa{background:#19c866}.ig{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4)}
+
+/* GENERAL */
+.section{padding:26px 0}
+.section-title{text-align:center;margin-bottom:17px}
+.section-title h2{margin:0;font-size:26px}
+.section-title p{margin:6px 0 0;color:var(--muted);font-size:12px}
+.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.game-card{position:relative;overflow:hidden;background:linear-gradient(180deg,#141d2a,#0e151f);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center;transition:.2s}
+.game-card:hover{transform:translateY(-3px);border-color:#ffffff24}
+.game-icon{font-size:45px}
+.game-card h3{margin:9px 0 4px;font-size:17px}
+.game-card p{margin:0 0 15px;color:var(--muted);font-size:11px}
+.primary{border:0;background:linear-gradient(180deg,#ffe044,#ffc400);color:#101010;font-weight:1000;border-radius:10px;padding:11px 17px}
+.primary:hover{filter:brightness(1.05)}
+.secondary{border:1px solid var(--line);background:#121a25;color:#fff;font-weight:800;border-radius:10px;padding:10px 13px}
+
+/* ORDER */
+#order{display:none}
+.order-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:14px}
+.panel{background:linear-gradient(180deg,#111925,#0e151f);border:1px solid var(--line);border-radius:17px;padding:16px}
+.order-main .panel+.panel{margin-top:12px}
+.order-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.order-head h2{margin:0;font-size:21px}
+.order-head small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.close{border:1px solid var(--line);background:#18212d;color:#fff;border-radius:9px;padding:8px 11px}
+.step-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.step-title{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:950}
+.step-num{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#111;font-size:11px}
+.hint{color:var(--muted);font-size:10px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.field label{display:block;margin:0 0 5px;color:#cbd5e1;font-size:10px;font-weight:900}
+.field input,.field select{width:100%;border:1px solid var(--line);border-radius:9px;background:#080e16;color:#fff;padding:11px;outline:none}
+.field input:focus,.field select:focus{border-color:#ffd21a77}
+
+/* PRODUCTS */
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.product{min-height:68px;text-align:left;border:1px solid var(--line);border-radius:11px;background:#080e16;color:#fff;padding:10px 9px}
+.product:hover{border-color:#ffd21a66}
+.product.selected{border:2px solid var(--gold);background:#29240a;box-shadow:0 0 0 2px #ffd21a12}
+.product strong{display:block;font-size:12px;line-height:1.25}
+.product small{display:block;color:var(--gold);font-size:11px;font-weight:950;margin-top:6px}
+
+/* QTY */
+.qty-control{display:flex;align-items:center;gap:13px}
+.qty-control button{width:38px;height:38px;border:1px solid var(--line);border-radius:9px;background:#18212d;color:#fff;font-size:21px}
+.qty-value{min-width:28px;text-align:center;font-size:16px}
+
+/* PAYMENT */
+.payments{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.payment{min-height:68px;border:1px solid var(--line);border-radius:11px;background:#080e16;color:#fff;font-weight:950}
+.payment small{display:block;color:var(--muted);font-size:9px;font-weight:600;margin-top:4px}
+.payment.selected{border:2px solid var(--gold);background:#29240a}
+.payment-info{display:none;margin-top:9px;padding:12px;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;background:#080e16;font-size:12px;line-height:1.65}
+.payment-info b{color:var(--gold)}
+
+/* SUMMARY */
+.summary{position:sticky;top:78px;align-self:start}
+.summary-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}
+.summary-title h3{margin:0;font-size:15px}
+.summary-tag{font-size:9px;color:var(--gold);border:1px solid #ffd21a44;border-radius:20px;padding:5px 7px}
+.summary-box{background:#080e16;border:1px solid var(--line);border-radius:12px;padding:13px}
+.summary-row{display:flex;justify-content:space-between;gap:12px;margin:7px 0;color:#bdc6d2;font-size:11px}
+.summary-row b{color:#fff;text-align:right;max-width:55%}
+.total-row{border-top:1px solid var(--line);padding-top:12px;margin-top:12px;font-size:18px;font-weight:1000;color:#fff}
+.total-row b{color:var(--gold)}
+.summary-note{color:var(--muted);font-size:10px;line-height:1.5;margin:11px 0 0}
+.order-btn{width:100%;margin-top:12px;padding:13px;font-size:13px}
+
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px;text-align:center}
+.feature .emoji{font-size:20px}
+.feature strong{display:block;font-size:11px;margin:6px 0 3px}
+.feature span{display:block;color:var(--muted);font-size:9px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);margin-top:25px;padding:27px 0;text-align:center;color:var(--muted);font-size:10px}
+.footer-logo{font-size:20px;color:var(--gold);font-weight:1000;margin-bottom:7px}.footer-logo span{color:var(--blue)}
+
+/* RESPONSIVE */
+@media(max-width:850px){
+ .order-layout{grid-template-columns:1fr}
+ .summary{position:static}
+}
+@media(max-width:700px){
+ .container{width:calc(100% - 16px)}
+ .nav{height:57px}.logo{font-size:19px}
+ .navlinks a{font-size:10px;padding:7px 6px}
+ .hero{padding-top:23px}
+ .game-grid{grid-template-columns:1fr}
+ .products{grid-template-columns:repeat(2,1fr)}
+ .payments{grid-template-columns:1fr 1fr}
+ .form-grid{grid-template-columns:1fr}
+ .features{grid-template-columns:1fr 1fr}
+ .slide img{height:175px}
+}
+@media(max-width:390px){
+ .navlinks a:nth-child(3){display:none}
+ .products{grid-template-columns:1fr 1fr}
+ .contact{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="container nav">
+<div class="logo">RANA <span>SHOP</span></div>
+<nav class="navlinks">
+<a href="#home">Beranda</a><a href="#games">Game</a><a href="#order">Order</a><a href="#contact">Kontak</a>
+</nav>
+</div>
+</header>
+
+<main id="home">
+<section class="container hero">
+<div class="badge">⚡ TOP UP CEPAT & MUDAH</div>
+<h1>Top Up Game <span>RANA SHOP</span></h1>
+<p>Harga jelas • Pilih nominal • Bayar • Konfirmasi lewat WhatsApp</p>
+</section>
+
+<!-- BANNER TETAP. Jangan ubah nama file jika file banner sudah ada di GitHub. -->
+<section class="container banner">
+<div class="track" id="track">
+<div class="slide"><img src="banner-ml.jpg" alt="RANA SHOP Mobile Legends"></div>
+<div class="slide"><img src="banner-ml-pass.jpg" alt="RANA SHOP ML Pass"></div>
+<div class="slide"><img src="banner-ff.jpg" alt="RANA SHOP Free Fire"></div>
+<div class="slide"><img src="banner-pubg.jpg" alt="RANA SHOP PUBG"></div>
+</div>
+<button class="banner-btn prev" onclick="moveSlide(-1)" aria-label="Banner sebelumnya">‹</button>
+<button class="banner-btn next" onclick="moveSlide(1)" aria-label="Banner berikutnya">›</button>
+<div class="dots">
+<button class="dot active" onclick="goSlide(0)"></button>
+<button class="dot" onclick="goSlide(1)"></button>
+<button class="dot" onclick="goSlide(2)"></button>
+<button class="dot" onclick="goSlide(3)"></button>
+</div>
+</section>
+
+<section class="container contact" id="contact">
+<a class="wa" href="https://wa.me/62895417880954" target="_blank" rel="noopener">💬 WhatsApp <span>0895-4178-80954</span></a>
+<a class="ig" href="https://instagram.com/Ranashop_3" target="_blank" rel="noopener">📸 Instagram <span>@Ranashop_3</span></a>
+</section>
+
+<section class="container section" id="games">
+<div class="section-title"><h2>🎮 Pilih Game</h2><p>Pilih game untuk membuka form top up.</p></div>
+<div class="game-grid">
+<article class="game-card"><div class="game-icon">💎</div><h3>Mobile Legends</h3><p>Diamond & Weekly Diamond Pass</p><button class="primary" onclick="openOrder('Mobile Legends')">PILIH GAME</button></article>
+<article class="game-card"><div class="game-icon">🔥</div><h3>Free Fire</h3><p>Diamond Free Fire</p><button class="primary" onclick="openOrder('Free Fire')">PILIH GAME</button></article>
+<article class="game-card"><div class="game-icon">🎯</div><h3>PUBG Mobile</h3><p>UC PUBG Mobile</p><button class="primary" onclick="openOrder('PUBG Mobile')">PILIH GAME</button></article>
+</div>
+</section>
+
+<section class="container section" id="order">
+<div class="order-layout">
+
+<div class="order-main">
+<div class="panel">
+<div class="order-head">
+<div><h2>🛒 Order RANA SHOP</h2><small>Isi data, pilih nominal dan metode pembayaran.</small></div>
+<button class="close" onclick="closeOrder()">Tutup</button>
+</div>
+</div>
+
+<div class="panel">
+<div class="step-head"><div class="step-title"><span class="step-num">1</span>Data Akun</div><span class="hint">Tidak perlu password</span></div>
+<div class="form-grid">
+<div class="field"><label>GAME</label><select id="game" onchange="changeGame()"></select></div>
+<div class="field"><label>USER ID</label><input id="uid" inputmode="numeric" placeholder="Masukkan User ID"></div>
+<div class="field"><label>SERVER / ZONE ID</label><input id="server" inputmode="numeric" placeholder="Jika diperlukan"></div>
+<div class="field"><label>NAMA PEMBELI</label><input id="buyer" placeholder="Nama kamu"></div>
+</div>
+</div>
+
+<div class="panel">
+<div class="step-head"><div class="step-title"><span class="step-num">2</span>Pilih Nominal</div><span class="hint">Klik nominal pilihan</span></div>
+<div class="products" id="products"></div>
+</div>
+
+<div class="panel">
+<div class="step-head"><div class="step-title"><span class="step-num">3</span>Jumlah</div><span class="hint">Minimal 1</span></div>
+<div class="qty-control"><button onclick="changeQty(-1)">−</button><span class="qty-value" id="qty">1</span><button onclick="changeQty(1)">+</button></div>
+</div>
+
+<div class="panel">
+<div class="step-head"><div class="step-title"><span class="step-num">4</span>Metode Pembayaran</div><span class="hint">Pilih salah satu</span></div>
+<div class="payments">
+<button class="payment" onclick="selectPay('DANA',this)">DANA<small>E-wallet</small></button>
+<button class="payment" onclick="selectPay('SeaBank',this)">SeaBank<small>Transfer bank</small></button>
+<button class="payment" onclick="selectPay('BCA',this)">BCA<small>Transfer bank</small></button>
+</div>
+<div class="payment-info" id="paymentInfo"></div>
+</div>
+
+<div class="panel">
+<div class="step-head"><div class="step-title"><span class="step-num">5</span>Konfirmasi</div><span class="hint">Periksa data sebelum order</span></div>
+<div style="color:var(--muted);font-size:10px;line-height:1.6">
+Setelah melakukan transfer, <b style="color:#fff">sertakan bukti transfer kepada admin RANA SHOP</b>.
+Jangan pernah memberikan password akun game.
+</div>
+<button class="primary order-btn" onclick="sendOrder()">💬 PESAN SEKARANG VIA WHATSAPP</button>
+</div>
+</div>
+
+<aside class="panel summary">
+<div class="summary-title"><h3>📋 Ringkasan Pesanan</h3><span class="summary-tag">RANA SHOP</span></div>
+<div class="summary-box">
+<div class="summary-row"><span>Game</span><b id="sGame">-</b></div>
+<div class="summary-row"><span>Nominal</span><b id="sProduct">-</b></div>
+<div class="summary-row"><span>Jumlah</span><b id="sQty">1</b></div>
+<div class="summary-row"><span>Pembayaran</span><b id="sPay">-</b></div>
+<div class="summary-row total-row"><span>Total</span><b id="total">Rp0</b></div>
+</div>
+<p class="summary-note">Total akan dihitung otomatis berdasarkan nominal dan jumlah yang dipilih.</p>
+</aside>
+
+</div>
+</section>
+
+<section class="container section">
+<div class="section-title"><h2>⭐ Kenapa RANA SHOP?</h2><p>Belanja top up lebih sederhana dari HP.</p></div>
+<div class="features">
+<div class="feature"><div class="emoji">⚡</div><strong>Proses Cepat</strong><span>Diproses setelah konfirmasi.</span></div>
+<div class="feature"><div class="emoji">🛡️</div><strong>Aman</strong><span>Tidak meminta password game.</span></div>
+<div class="feature"><div class="emoji">💰</div><strong>Harga Jelas</strong><span>Total tampil sebelum order.</span></div>
+<div class="feature"><div class="emoji">📱</div><strong>Mudah</strong><span>Order langsung lewat WhatsApp.</span></div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-logo">RANA <span>SHOP</span></div>
+<div>WhatsApp 0895-4178-80954 · Instagram @Ranashop_3</div>
+<div style="margin-top:7px">© 2026 RANA SHOP</div>
+</div>
+</footer>
+
+<script>
+/* ==========================================================
+   RANA SHOP — PENGATURAN PRODUK & HARGA
+   Ubah angka "price" jika kamu ingin mengganti harga.
+   Contoh: {name:"100 Diamonds",price:25000}
+========================================================== */
+const PRODUCTS={
+ "Mobile Legends":[
+  {name:"59 Diamonds",price:16305},
+  {name:"74 Diamonds",price:20732},
+  {name:"85 Diamonds",price:23439},
+  {name:"110 Diamonds",price:31098},
+  {name:"170 Diamonds",price:47500},
+  {name:"222 Diamonds",price:62000},
+  {name:"257 Diamonds",price:72000},
+  {name:"344 Diamonds",price:95000},
+  {name:"Weekly Diamond Pass",price:30000}
+ ],
+ "Free Fire":[
+  {name:"70 Diamonds",price:10000},
+  {name:"140 Diamonds",price:19000},
+  {name:"355 Diamonds",price:47000},
+  {name:"720 Diamonds",price:90000}
+ ],
+ "PUBG Mobile":[
+  {name:"60 UC",price:15000},
+  {name:"325 UC",price:70000},
+  {name:"660 UC",price:135000},
+  {name:"1800 UC",price:350000}
+ ]
+};
+
+/* DATA PEMBAYARAN RANA SHOP */
+const PAYMENTS={
+ "DANA":{name:"ANANDA FITRIA",account:"08995239282",type:"E-wallet"},
+ "SeaBank":{name:"RADYAN MAHESA PRAYOGA",account:"901355791626",type:"Transfer bank"},
+ "BCA":{name:"ANANDA FITRIA",account:"6365167773",type:"Transfer bank"}
+};
+
+/* BANNER */
+let bannerIndex=0;
+const track=document.getElementById("track");
+const dots=document.querySelectorAll(".dot");
+function goSlide(i){
+ bannerIndex=i;
+ track.style.transform=`translateX(-${i*100}%)`;
+ dots.forEach((d,n)=>d.classList.toggle("active",n===i));
+}
+function moveSlide(d){goSlide((bannerIndex+d+4)%4)}
+setInterval(()=>moveSlide(1),5000);
+
+/* ORDER */
+const game=document.getElementById("game");
+const products=document.getElementById("products");
+let selectedProduct=null;
+let quantity=1;
+let selectedPayment="";
+
+function init(){
+ game.innerHTML=Object.keys(PRODUCTS).map(g=>`<option value="${g}">${g}</option>`).join("");
+ changeGame();
+}
+function changeGame(){
+ selectedProduct=null;
+ renderProducts();
+ updateSummary();
+}
+function renderProducts(){
+ const list=PRODUCTS[game.value]||[];
+ products.innerHTML=list.map((p,i)=>`
+ <button class="product ${selectedProduct===i?"selected":""}" onclick="pickProduct(${i})">
+   <strong>${p.name}</strong>
+   <small>Rp${p.price.toLocaleString("id-ID")}</small>
+ </button>`).join("");
+}
+function pickProduct(i){
+ selectedProduct=i;
+ renderProducts();
+ updateSummary();
+}
+function changeQty(d){
+ quantity=Math.max(1,quantity+d);
+ document.getElementById("qty").textContent=quantity;
+ updateSummary();
+}
+function selectPay(name,el){
+ selectedPayment=name;
+ document.querySelectorAll(".payment").forEach(x=>x.classList.remove("selected"));
+ el.classList.add("selected");
+ const p=PAYMENTS[name];
+ const info=document.getElementById("paymentInfo");
+ info.style.display="block";
+ info.innerHTML=
+ `<b>${name}</b><br>`+
+ `A/N ${p.name}<br>`+
+ `No. Rek/HP: <b>${p.account}</b><br>`+
+ `<span style="color:var(--muted)">${p.type}</span>`;
+ updateSummary();
+}
+function updateSummary(){
+ const p=selectedProduct===null?null:(PRODUCTS[game.value]||[])[selectedProduct];
+ document.getElementById("sGame").textContent=game.value||"-";
+ document.getElementById("sProduct").textContent=p?p.name:"-";
+ document.getElementById("sQty").textContent=quantity;
+ document.getElementById("sPay").textContent=selectedPayment||"-";
+ document.getElementById("total").textContent=p
+   ?"Rp"+(p.price*quantity).toLocaleString("id-ID")
+   :"Rp0";
+}
+function openOrder(g){
+ document.getElementById("order").style.display="block";
+ game.value=g;
+ selectedProduct=null;
+ quantity=1;
+ selectedPayment="";
+ document.getElementById("qty").textContent="1";
+ document.getElementById("paymentInfo").style.display="none";
+ document.querySelectorAll(".payment").forEach(x=>x.classList.remove("selected"));
+ renderProducts();
+ updateSummary();
+ document.getElementById("order").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function closeOrder(){
+ document.getElementById("order").style.display="none";
+ document.getElementById("games").scrollIntoView({behavior:"smooth"});
+}
+
+/* KIRIM ORDER KE WHATSAPP */
+function sendOrder(){
+ const uid=document.getElementById("uid").value.trim();
+ const server=document.getElementById("server").value.trim();
+ const buyer=document.getElementById("buyer").value.trim();
+
+ if(!uid){alert("Masukkan User ID terlebih dahulu.");return}
+ if(selectedProduct===null){alert("Pilih nominal terlebih dahulu.");return}
+ if(!selectedPayment){alert("Pilih metode pembayaran terlebih dahulu.");return}
+
+ const p=PRODUCTS[game.value][selectedProduct];
+ const total=p.price*quantity;
+ const bank=PAYMENTS[selectedPayment];
+
+ const msg=
+ `Halo RANA SHOP, saya ingin order top up.%0A%0A`+
+ `Game: ${encodeURIComponent(game.value)}%0A`+
+ `Nominal: ${encodeURIComponent(p.name)}%0A`+
+ `Jumlah: ${quantity}%0A`+
+ `User ID: ${encodeURIComponent(uid)}%0A`+
+ `Server/Zone ID: ${encodeURIComponent(server||"-")}%0A`+
+ `Nama: ${encodeURIComponent(buyer||"-")}%0A`+
+ `Pembayaran: ${encodeURIComponent(selectedPayment)}%0A`+
+ `Total: Rp${total.toLocaleString("id-ID")}%0A%0A`+
+ `Rekening pembayaran:%0A`+
+ `${encodeURIComponent(selectedPayment+" — A/N "+bank.name+" — "+bank.account)}%0A%0A`+
+ `Saya akan mengirim bukti transfer kepada admin.`;
+
+ window.open(`https://wa.me/62895417880954?text=${msg}`,"_blank","noopener");
+}
+init();
+</script>
+</body>
+</html>
