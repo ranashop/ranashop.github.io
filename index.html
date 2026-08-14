@@ -1,864 +1,1888 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>RanaShop — Top Up Game Cepat & Aman</title>
-  <meta name="description" content="Top up game cepat, mudah, dan aman di RanaShop.">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #080b12;
+  --bg-soft: #0d111a;
+  --card: #111722;
+  --card-2: #151c29;
+  --line: rgba(255,255,255,.08);
+
+  --primary: #f5a623;
+  --primary-2: #ffbf4a;
+  --green: #25d366;
+
+  --text: #f5f7fa;
+  --muted: #929baa;
+  --muted-2: #687181;
+
+  --radius: 18px;
+  --container: 1120px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 80% -10%,
+      rgba(245,166,35,.09),
+      transparent 28%
+    ),
+    var(--bg);
+
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+body,
+button,
+input {
+  font-family: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  height: 72px;
+
+  background: rgba(8,11,18,.82);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.nav {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
 
-  <link rel="icon" href="diamond.jpg">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+}
 
-  <link rel="stylesheet" href="style.css">
-</head>
+.brand img {
+  width: 39px;
+  height: 39px;
 
-<body>
+  border-radius: 11px;
+  object-fit: cover;
 
-  <!-- ================= HEADER ================= -->
-  <header class="site-header">
-    <div class="container nav">
+  border: 1px solid rgba(255,255,255,.12);
+}
 
-      <a href="#" class="brand">
-        <img src="diamond.jpg" alt="RanaShop">
-        <div>
-          <strong>Rana<span>Shop</span></strong>
-          <small>TOP UP & DIGITAL STORE</small>
-        </div>
-      </a>
+.brand strong {
+  display: block;
 
-      <nav class="desktop-menu">
-        <a href="#games">Game</a>
-        <a href="#advantages">Keunggulan</a>
-        <a href="#faq">FAQ</a>
-      </nav>
+  font-size: 18px;
+  line-height: 1;
 
-      <a href="https://wa.me/62895417880954"
-         target="_blank"
-         class="header-wa">
-        <i class="fab fa-whatsapp"></i>
-        <span>Chat Admin</span>
-      </a>
+  letter-spacing: -.5px;
+}
 
-    </div>
-  </header>
+.brand strong span {
+  color: var(--primary);
+}
 
+.brand small {
+  display: block;
 
-  <main>
+  margin-top: 4px;
 
-    <!-- ================= HERO ================= -->
-    <section class="hero">
+  font-size: 7px;
+  letter-spacing: 1.6px;
 
-      <div class="hero-glow glow-one"></div>
-      <div class="hero-glow glow-two"></div>
+  color: var(--muted-2);
+}
 
-      <div class="container hero-inner">
+.desktop-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 
-        <div class="hero-copy">
+  margin-left: auto;
+}
 
-          <div class="eyebrow">
-            <span class="live-dot"></span>
-            TOP UP GAME TERPERCAYA
-          </div>
+.desktop-menu a {
+  position: relative;
 
-          <h1>
-            Main terus.<br>
-            <span>Top up tanpa ribet.</span>
-          </h1>
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
 
-          <p>
-            Pilih game, tentukan nominal, lalu kirim pesanan.
-            Proses cepat dengan bantuan admin melalui WhatsApp.
-          </p>
+  transition: color .2s ease;
+}
 
-          <div class="hero-actions">
-            <a href="#games" class="primary-btn">
-              <i class="fas fa-gamepad"></i>
-              Mulai Top Up
-            </a>
+.desktop-menu a:hover {
+  color: var(--text);
+}
 
-            <a href="#advantages" class="secondary-btn">
-              Lihat Keunggulan
-              <i class="fas fa-arrow-down"></i>
-            </a>
-          </div>
+.header-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 
-          <div class="hero-trust">
+  padding: 10px 15px;
 
-            <div>
-              <strong>10+</strong>
-              <span>Game</span>
-            </div>
+  border-radius: 11px;
 
-            <div class="trust-line"></div>
+  background: rgba(37,211,102,.10);
+  border: 1px solid rgba(37,211,102,.22);
 
-            <div>
-              <strong>24/7</strong>
-              <span>Support</span>
-            </div>
+  color: #61e891;
 
-            <div class="trust-line"></div>
+  font-size: 12px;
+  font-weight: 700;
 
-            <div>
-              <strong>Fast</strong>
-              <span>Process</span>
-            </div>
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
 
-          </div>
+.header-wa:hover {
+  transform: translateY(-2px);
+  background: rgba(37,211,102,.16);
+}
 
-        </div>
-
-
-        <!-- HERO VISUAL -->
-        <div class="hero-visual">
-
-          <div class="visual-card main-visual">
-
-            <div class="visual-top">
-              <span class="status">
-                <i class="fas fa-circle"></i>
-                ONLINE
-              </span>
-
-              <span class="secure">
-                <i class="fas fa-shield-halved"></i>
-                Secure
-              </span>
-            </div>
-
-            <div class="visual-content">
-
-              <div class="visual-game-images">
-
-                <img src="mlbb.jpg"
-                     alt="Mobile Legends"
-                     class="visual-img img-one">
 
-                <img src="freefire.jpg"
-                     alt="Free Fire"
-                     class="visual-img img-two">
-
-                <img src="pubg.jpg"
-                     alt="PUBG Mobile"
-                     class="visual-img img-three">
-
-              </div>
-
-              <div class="visual-text">
-                <small>RanaShop</small>
-                <strong>Game Top Up</strong>
-                <span>Simple • Fast • Reliable</span>
-              </div>
+/* =========================================================
+   HERO
+========================================================= */
 
-            </div>
+.hero {
+  position: relative;
+  overflow: hidden;
 
-            <div class="visual-bottom">
-              <span>
-                <i class="fas fa-bolt"></i>
-                Proses cepat
-              </span>
-
-              <span>
-                <i class="fas fa-headset"></i>
-                Admin siap membantu
-              </span>
-            </div>
-
-          </div>
-
-          <div class="floating-card float-price">
-            <i class="fas fa-gem"></i>
-            <div>
-              <small>Top Up</small>
-              <strong>Mulai dari Rp5.000</strong>
-            </div>
-          </div>
-
-          <div class="floating-card float-order">
-            <i class="fas fa-check"></i>
-            <div>
-              <small>Order</small>
-              <strong>Berhasil diproses</strong>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ================= QUICK INFO ================= -->
-    <section class="quick-info">
-      <div class="container quick-grid">
-
-        <div class="quick-item">
-          <div class="quick-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <div>
-            <strong>Proses Cepat</strong>
-            <span>Pesanan diproses secepatnya</span>
-          </div>
-        </div>
-
-        <div class="quick-item">
-          <div class="quick-icon">
-            <i class="fas fa-shield-halved"></i>
-          </div>
-          <div>
-            <strong>Transaksi Aman</strong>
-            <span>Data digunakan untuk kebutuhan order</span>
-          </div>
-        </div>
-
-        <div class="quick-item">
-          <div class="quick-icon">
-            <i class="fab fa-whatsapp"></i>
-          </div>
-          <div>
-            <strong>Support WhatsApp</strong>
-            <span>Admin siap membantu</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ================= GAME SECTION ================= -->
-    <section class="games-section" id="games">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div>
-            <span class="section-label">GAME FAVORIT</span>
-            <h2>Pilih game kamu</h2>
-            <p>
-              Temukan game favoritmu dan lanjutkan ke proses top up.
-            </p>
-          </div>
-
-          <div class="game-count">
-            <i class="fas fa-layer-group"></i>
-            <span><strong>10</strong> Game tersedia</span>
-          </div>
-
-        </div>
-
-
-        <div class="game-toolbar">
-
-          <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input
-              type="search"
-              id="gameSearch"
-              placeholder="Cari game..."
-              autocomplete="off">
-          </div>
-
-          <div class="game-filter">
-            <button class="filter-btn active" data-filter="all">
-              Semua
-            </button>
-            <button class="filter-btn" data-filter="mobile">
-              Mobile
-            </button>
-            <button class="filter-btn" data-filter="pc">
-              PC
-            </button>
-          </div>
-
-        </div>
-
-
-        <div class="game-grid" id="gameGrid">
-
-          <!-- Mobile Legends -->
-          <article class="game-card"
-                   data-name="mobile legends mlbb"
-                   data-category="mobile"
-                   onclick="selectGame('Mobile Legends','mlbb')">
-
-            <div class="game-image">
-              <img src="mlbb.jpg" alt="Mobile Legends">
-
-              <span class="popular-badge">
-                <i class="fas fa-fire"></i>
-                POPULER
-              </span>
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>Mobile Legends</h3>
-                <span>Moonton</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- Free Fire -->
-          <article class="game-card"
-                   data-name="free fire ff"
-                   data-category="mobile"
-                   onclick="selectGame('Free Fire','freefire')">
-
-            <div class="game-image">
-              <img src="freefire.jpg" alt="Free Fire">
-
-              <span class="popular-badge">
-                <i class="fas fa-fire"></i>
-                POPULER
-              </span>
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>Free Fire</h3>
-                <span>Garena</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- PUBG -->
-          <article class="game-card"
-                   data-name="pubg mobile"
-                   data-category="mobile"
-                   onclick="selectGame('PUBG Mobile','pubg')">
-
-            <div class="game-image">
-              <img src="pubg.jpg" alt="PUBG Mobile">
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>PUBG Mobile</h3>
-                <span>Tencent</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- Genshin -->
-          <article class="game-card"
-                   data-name="genshin impact"
-                   data-category="mobile"
-                   onclick="selectGame('Genshin Impact','genshin')">
-
-            <div class="game-image">
-              <img src="genshin.jpg" alt="Genshin Impact">
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>Genshin Impact</h3>
-                <span>HoYoverse</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- HOK -->
-          <article class="game-card"
-                   data-name="honor of kings hok"
-                   data-category="mobile"
-                   onclick="selectGame('Honor of Kings','hok')">
-
-            <div class="game-image">
-              <img src="hok.jpg" alt="Honor of Kings">
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>Honor of Kings</h3>
-                <span>Tencent</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- Roblox -->
-          <article class="game-card"
-                   data-name="roblox robux"
-                   data-category="mobile"
-                   onclick="selectGame('Roblox','roblox')">
-
-            <div class="game-image">
-              <img src="roblox.png" alt="Roblox">
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>Roblox</h3>
-                <span>Roblox Corporation</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- Valorant -->
-          <article class="game-card"
-                   data-name="valorant"
-                   data-category="pc"
-                   onclick="selectGame('Valorant','valorant')">
-
-            <div class="game-image">
-              <img src="valorant.jpg" alt="Valorant">
-
-              <span class="popular-badge">
-                <i class="fas fa-fire"></i>
-                FAVORIT
-              </span>
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>Valorant</h3>
-                <span>Riot Games</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- CODM -->
-          <article class="game-card"
-                   data-name="call of duty mobile codm"
-                   data-category="mobile"
-                   onclick="selectGame('Call of Duty Mobile','codm')">
-
-            <div class="game-image">
-              <img src="codm.jpg" alt="Call of Duty Mobile">
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>Call of Duty Mobile</h3>
-                <span>Activision</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- AOV -->
-          <article class="game-card"
-                   data-name="arena of valor aov"
-                   data-category="mobile"
-                   onclick="selectGame('Arena of Valor','aov')">
-
-            <div class="game-image">
-              <img src="aov.jpg" alt="Arena of Valor">
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>Arena of Valor</h3>
-                <span>Garena</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-
-          <!-- LOL -->
-          <article class="game-card"
-                   data-name="league of legends lol"
-                   data-category="pc"
-                   onclick="selectGame('League of Legends','lol')">
-
-            <div class="game-image">
-              <img src="lol.jpg" alt="League of Legends">
-
-              <span class="game-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </span>
-            </div>
-
-            <div class="game-details">
-              <div>
-                <h3>League of Legends</h3>
-                <span>Riot Games</span>
-              </div>
-              <strong>Top Up</strong>
-            </div>
-
-          </article>
-
-        </div>
-
-
-        <div class="no-results" id="noResults">
-          <i class="fas fa-magnifying-glass"></i>
-          <strong>Game tidak ditemukan</strong>
-          <span>Coba gunakan kata pencarian lain.</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= ADVANTAGES ================= -->
-    <section class="advantages" id="advantages">
-
-      <div class="container">
-
-        <div class="section-heading centered">
-          <span class="section-label">KENAPA RANASHOP?</span>
-          <h2>Dibuat sederhana untuk kamu</h2>
-          <p>
-            Nggak perlu ribet. Pilih game, isi data,
-            pilih nominal, dan selesaikan pesanan.
-          </p>
-        </div>
-
-
-        <div class="advantage-grid">
-
-          <div class="advantage-card">
-            <div class="advantage-number">01</div>
-            <div class="advantage-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <h3>Proses cepat</h3>
-            <p>
-              Pesanan langsung diteruskan ke admin
-              setelah kamu melakukan konfirmasi.
-            </p>
-          </div>
-
-          <div class="advantage-card">
-            <div class="advantage-number">02</div>
-            <div class="advantage-icon">
-              <i class="fas fa-wallet"></i>
-            </div>
-            <h3>Pembayaran jelas</h3>
-            <p>
-              Pilih metode pembayaran yang tersedia
-              dan ikuti instruksi transaksi.
-            </p>
-          </div>
-
-          <div class="advantage-card">
-            <div class="advantage-number">03</div>
-            <div class="advantage-icon">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <h3>Admin mudah dihubungi</h3>
-            <p>
-              Semua detail pesanan dikirim langsung
-              melalui WhatsApp.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= HOW IT WORKS ================= -->
-    <section class="how-section">
-
-      <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <span class="section-label">CARA ORDER</span>
-            <h2>Semudah ini</h2>
-          </div>
-        </div>
-
-
-        <div class="steps">
-
-          <div class="step">
-            <span>01</span>
-            <div>
-              <i class="fas fa-gamepad"></i>
-              <h3>Pilih game</h3>
-              <p>Pilih game yang ingin kamu top up.</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <span>02</span>
-            <div>
-              <i class="fas fa-id-card"></i>
-              <h3>Masukkan ID</h3>
-              <p>Isi Player ID atau User ID dengan benar.</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <span>03</span>
-            <div>
-              <i class="fas fa-gem"></i>
-              <h3>Pilih nominal</h3>
-              <p>Tentukan nominal yang kamu inginkan.</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <span>04</span>
-            <div>
-              <i class="fab fa-whatsapp"></i>
-              <h3>Konfirmasi</h3>
-              <p>Kirim detail order kepada admin.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= FAQ ================= -->
-    <section class="faq-section" id="faq">
-
-      <div class="container faq-container">
-
-        <div class="section-heading centered">
-          <span class="section-label">FAQ</span>
-          <h2>Pertanyaan umum</h2>
-          <p>
-            Beberapa hal yang sering ditanyakan sebelum melakukan order.
-          </p>
-        </div>
-
-
-        <div class="faq-list">
-
-          <details>
-            <summary>
-              Berapa lama proses top up?
-              <i class="fas fa-plus"></i>
-            </summary>
-            <p>
-              Waktu proses dapat berbeda tergantung game,
-              metode pembayaran, dan kondisi layanan.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              Apakah saya harus memberikan password akun?
-              <i class="fas fa-plus"></i>
-            </summary>
-            <p>
-              Tidak. Jangan pernah memberikan password akun.
-              Cukup masukkan informasi yang diperlukan untuk game tersebut.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              Bagaimana cara melakukan pemesanan?
-              <i class="fas fa-plus"></i>
-            </summary>
-            <p>
-              Pilih game, isi data akun, pilih nominal dan pembayaran,
-              lalu kirim detail pesanan melalui WhatsApp.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              Bisa menghubungi admin jika ada masalah?
-              <i class="fas fa-plus"></i>
-            </summary>
-            <p>
-              Tentu. Gunakan tombol WhatsApp yang tersedia
-              untuk menghubungi admin.
-            </p>
-          </details>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= CTA ================= -->
-    <section class="final-cta">
-
-      <div class="container">
-
-        <div class="cta-box">
-
-          <div class="cta-glow"></div>
-
-          <div class="cta-content">
-            <span class="section-label">SIAP MAIN?</span>
-
-            <h2>
-              Top up sekarang,<br>
-              lanjutkan permainanmu.
-            </h2>
-
-            <p>
-              Pilih game favoritmu dan mulai proses order
-              dengan cepat dan mudah.
-            </p>
-
-            <a href="#games" class="primary-btn">
-              <i class="fas fa-gamepad"></i>
-              Pilih Game
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer">
-
-    <div class="container footer-top">
-
-      <div class="footer-brand">
-
-        <a href="#" class="brand">
-          <img src="diamond.jpg" alt="RanaShop">
-
-          <div>
-            <strong>Rana<span>Shop</span></strong>
-            <small>TOP UP & DIGITAL STORE</small>
-          </div>
-        </a>
-
-        <p>
-          Platform demo top up game dengan proses order
-          yang sederhana dan mudah digunakan.
-        </p>
-
-      </div>
-
-
-      <div class="footer-column">
-        <h4>Navigasi</h4>
-        <a href="#games">Game</a>
-        <a href="#advantages">Keunggulan</a>
-        <a href="#faq">FAQ</a>
-      </div>
-
-
-      <div class="footer-column">
-        <h4>Game</h4>
-        <a href="#games">Mobile Legends</a>
-        <a href="#games">Free Fire</a>
-        <a href="#games">PUBG Mobile</a>
-        <a href="#games">Valorant</a>
-      </div>
-
-
-      <div class="footer-column">
-        <h4>Kontak</h4>
-        <a href="https://wa.me/62895417880954" target="_blank">
-          <i class="fab fa-whatsapp"></i>
-          WhatsApp Admin
-        </a>
-      </div>
-
-    </div>
-
-
-    <div class="container footer-bottom">
-
-      <span>
-        © 2026 RanaShop. All rights reserved.
-      </span>
-
-      <span>
-        Made for gamers.
-      </span>
-
-    </div>
-
-  </footer>
-
-
-  <!-- FLOATING WHATSAPP -->
-  <a href="https://wa.me/62895417880954"
-     target="_blank"
-     class="floating-wa"
-     aria-label="Chat WhatsApp">
-
-    <i class="fab fa-whatsapp"></i>
-
-    <span>Chat Admin</span>
-
-  </a>
-
-
-  <script src="script.js"></script>
-
-</body>
-</html>
+  min-height: 650px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 78px 0 90px;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(8,11,18,.98) 0%,
+      rgba(8,11,18,.94) 43%,
+      rgba(8,11,18,.68) 100%
+    );
+}
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.08),
+    transparent
+  );
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: 1fr .9fr;
+  align-items: center;
+
+  gap: 70px;
+}
+
+.hero-copy {
+  max-width: 590px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 11px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid rgba(245,166,35,.18);
+  border-radius: 999px;
+
+  background: rgba(245,166,35,.06);
+
+  color: #d7a65c;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #48db76;
+
+  box-shadow:
+    0 0 0 4px rgba(72,219,118,.08),
+    0 0 12px rgba(72,219,118,.55);
+}
+
+.hero h1 {
+  font-size: clamp(43px, 5vw, 68px);
+  line-height: 1.02;
+
+  letter-spacing: -3px;
+  font-weight: 850;
+
+  margin-bottom: 24px;
+}
+
+.hero h1 span {
+  color: var(--primary);
+}
+
+.hero-copy > p {
+  max-width: 530px;
+
+  color: var(--muted);
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  margin-bottom: 31px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  margin-bottom: 38px;
+}
+
+.primary-btn,
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 47px;
+
+  padding: 0 18px;
+
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease;
+}
+
+.primary-btn {
+  color: #17120a;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary-2),
+    var(--primary)
+  );
+
+  box-shadow:
+    0 9px 30px rgba(245,166,35,.15);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 13px 35px rgba(245,166,35,.22);
+}
+
+.secondary-btn {
+  color: var(--muted);
+
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.025);
+}
+
+.secondary-btn:hover {
+  color: var(--text);
+  border-color: rgba(255,255,255,.15);
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+}
+
+.hero-trust div:not(.trust-line) {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-trust strong {
+  font-size: 16px;
+}
+
+.hero-trust span {
+  color: var(--muted-2);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+.trust-line {
+  width: 1px;
+  height: 28px;
+
+  background: var(--line);
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.hero-visual {
+  position: relative;
+
+  min-height: 390px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+.glow-one {
+  top: -300px;
+  right: -100px;
+
+  background: rgba(245,166,35,.11);
+}
+
+.glow-two {
+  bottom: -350px;
+  left: -200px;
+
+  background: rgba(65,105,225,.06);
+}
+
+.visual-card {
+  width: min(100%, 455px);
+
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25,32,44,.96),
+      rgba(13,17,26,.96)
+    );
+
+  box-shadow:
+    0 35px 80px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.04);
+
+  overflow: hidden;
+}
+
+.visual-top {
+  height: 54px;
+
+  padding: 0 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.status,
+.secure {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+.status {
+  color: #66dc89;
+}
+
+.status i {
+  font-size: 6px;
+}
+
+.secure {
+  color: var(--muted-2);
+}
+
+.visual-content {
+  min-height: 275px;
+
+  padding: 28px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(245,166,35,.12),
+      transparent 45%
+    );
+}
+
+.visual-game-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 150px;
+}
+
+.visual-img {
+  width: 125px;
+  height: 150px;
+
+  object-fit: cover;
+
+  border-radius: 16px;
+
+  border: 3px solid #111722;
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35);
+}
+
+.img-one {
+  transform: rotate(-9deg) translateX(24px);
+  z-index: 1;
+}
+
+.img-two {
+  transform: translateY(-10px);
+  z-index: 3;
+}
+
+.img-three {
+  transform: rotate(9deg) translateX(-24px);
+  z-index: 2;
+}
+
+.visual-text {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 23px;
+}
+
+.visual-text small {
+  color: var(--primary);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.visual-text strong {
+  margin-top: 4px;
+
+  font-size: 28px;
+  letter-spacing: -1px;
+}
+
+.visual-text span {
+  margin-top: 4px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+.visual-bottom {
+  min-height: 53px;
+
+  padding: 0 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  border-top: 1px solid var(--line);
+
+  color: var(--muted);
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.visual-bottom i {
+  margin-right: 4px;
+  color: var(--primary);
+}
+
+.floating-card {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px 13px;
+
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 13px;
+
+  background: rgba(17,23,34,.9);
+
+  box-shadow: 0 15px 35px rgba(0,0,0,.32);
+
+  backdrop-filter: blur(14px);
+}
+
+.floating-card > i {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: rgba(245,166,35,.10);
+  color: var(--primary);
+
+  font-size: 12px;
+}
+
+.floating-card small {
+  display: block;
+
+  color: var(--muted-2);
+
+  font-size: 8px;
+}
+
+.floating-card strong {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 10px;
+}
+
+.float-price {
+  left: -22px;
+  bottom: 53px;
+}
+
+.float-order {
+  right: -18px;
+  top: 55px;
+}
+
+.float-order > i {
+  color: #5ee58a;
+  background: rgba(37,211,102,.10);
+}
+
+
+/* =========================================================
+   QUICK INFO
+========================================================= */
+
+.quick-info {
+  padding: 25px 0;
+
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 0;
+}
+
+.quick-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px 25px;
+
+  border-right: 1px solid var(--line);
+}
+
+.quick-item:first-child {
+  padding-left: 0;
+}
+
+.quick-item:last-child {
+  border-right: 0;
+}
+
+.quick-icon {
+  width: 39px;
+  height: 39px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background: rgba(245,166,35,.08);
+  color: var(--primary);
+
+  font-size: 14px;
+}
+
+.quick-item strong {
+  display: block;
+
+  font-size: 12px;
+}
+
+.quick-item span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: var(--muted-2);
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   SECTION GENERAL
+========================================================= */
+
+.games-section,
+.advantages,
+.how-section,
+.faq-section {
+  padding: 100px 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+
+  margin-bottom: 36px;
+}
+
+.section-heading.centered {
+  display: block;
+
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: center;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--primary);
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 1.6px;
+}
+
+.section-heading h2 {
+  font-size: clamp(28px, 3vw, 39px);
+
+  line-height: 1.1;
+  letter-spacing: -1.4px;
+}
+
+.section-heading p {
+  max-width: 550px;
+
+  margin-top: 10px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.section-heading.centered p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.game-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 12px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+}
+
+.game-count i {
+  color: var(--primary);
+}
+
+.game-count strong {
+  color: var(--text);
+}
+
+
+/* =========================================================
+   GAME TOOLBAR
+========================================================= */
+
+.game-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.search-box {
+  position: relative;
+
+  width: 260px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: var(--muted-2);
+
+  font-size: 12px;
+}
+
+.search-box input {
+  width: 100%;
+  height: 40px;
+
+  padding: 0 13px 0 35px;
+
+  color: var(--text);
+
+  background: var(--card);
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  outline: none;
+
+  font-size: 11px;
+
+  transition: border-color .2s ease;
+}
+
+.search-box input:focus {
+  border-color: rgba(245,166,35,.45);
+}
+
+.game-filter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-btn {
+  height: 36px;
+
+  padding: 0 13px;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  background: transparent;
+  color: var(--muted);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
+}
+
+.filter-btn:hover {
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: rgba(245,166,35,.09);
+  border-color: rgba(245,166,35,.18);
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   GAME CARDS
+========================================================= */
+
+.game-grid {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 14px;
+}
+
+.game-card {
+  position: relative;
+
+  overflow: hidden;
+
+  background: var(--card);
+
+  border: 1px solid var(--line);
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(245,166,35,.35);
+
+  box-shadow:
+    0 20px 35px rgba(0,0,0,.25);
+}
+
+.game-image {
+  position: relative;
+
+  height: 170px;
+
+  overflow: hidden;
+
+  background: #161d29;
+}
+
+.game-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 45%,
+      rgba(0,0,0,.72) 100%
+    );
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform .5s ease;
+}
+
+.game-card:hover .game-image img {
+  transform: scale(1.06);
+}
+
+.popular-badge {
+  position: absolute;
+  z-index: 3;
+
+  left: 9px;
+  top: 9px;
+
+  padding: 5px 7px;
+
+  border-radius: 7px;
+
+  background: rgba(245,166,35,.94);
+  color: #17120a;
+
+  font-size: 7px;
+  font-weight: 900;
+
+  letter-spacing: .5px;
+}
+
+.popular-badge i {
+  margin-right: 3px;
+}
+
+.game-arrow {
+  position: absolute;
+  z-index: 4;
+
+  right: 9px;
+  top: 9px;
+
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(0,0,0,.38);
+
+  color: #fff;
+
+  font-size: 9px;
+
+  opacity: 0;
+
+  transform: translateX(-5px);
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease;
+}
+
+.game-card:hover .game-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.game-details {
+  min-height: 70px;
+
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+}
+
+.game-details h3 {
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.game-details span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: var(--muted-2);
+
+  font-size: 8px;
+}
+
+.game-details > strong {
+  color: var(--primary);
+
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.no-results {
+  display: none;
+
+  padding: 50px 20px;
+
+  text-align: center;
+
+  color: var(--muted);
+}
+
+.no-results i {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: var(--muted-2);
+
+  font-size: 22px;
+}
+
+.no-results strong {
+  display: block;
+
+  color: var(--text);
+
+  font-size: 14px;
+}
+
+.no-results span {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   ADVANTAGES
+========================================================= */
+
+.advantages {
+  background: var(--bg-soft);
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.advantage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 15px;
+
+  margin-top: 50px;
+}
+
+.advantage-card {
+  position: relative;
+
+  min-height: 240px;
+
+  padding: 27px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  background: var(--card);
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.advantage-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245,166,35,.23);
+}
+
+.advantage-number {
+  position: absolute;
+
+  right: 18px;
+  top: 15px;
+
+  color: rgba(255,255,255,.035);
+
+  font-size: 60px;
+  font-weight: 900;
+
+  letter-spacing: -5px;
+}
+
+.advantage-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 23px;
+
+  border-radius: 12px;
+
+  background: rgba(245,166,35,.08);
+  color: var(--primary);
+
+  font-size: 15px;
+}
+
+.advantage-card h3 {
+  font-size: 15px;
+}
+
+.advantage-card p {
+  max-width: 270px;
+
+  margin-top: 9px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 10px;
+}
+
+.step {
+  position: relative;
+
+  padding: 24px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: var(--card);
+}
+
+.step > span {
+  position: absolute;
+
+  top: 17px;
+  right: 18px;
+
+  color: var(--muted-2);
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.step i {
+  display: block;
+
+  margin-bottom: 22px;
+
+  color: var(--primary);
+
+  font-size: 17px;
+}
+
+.step h3 {
+  font-size: 13px;
+}
+
+.step p {
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq-section {
+  background: var(--bg-soft);
+}
+
+.faq-container {
+  max-width: 760px;
+}
+
+.faq-list {
+  margin-top: 40px;
+}
+
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-list details:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.faq-list summary {
+  min-height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  cursor: pointer;
+
+  list-style: none;
+
+  color: var(--text);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary i {
+  color: var(--muted-2);
+
+  font-size: 10px;
+
+  transition: transform .2s ease;
+}
+
+.faq-list details[open] summary i {
+  transform: rotate(45deg);
+  color: var(--primary);
+}
+
+.faq-list details p {
+  max-width: 650px;
+
+  padding: 0 30px 19px 0;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.final-cta {
+  padding: 100px 0;
+}
+
+.cta-box {
+  position: relative;
+
+  min-height: 340px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  padding: 60px;
+
+  border: 1px solid rgba(245,166,35,.18);
+  border-radius: 25px;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(245,166,35,.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      130deg,
+      #131a25,
+      #0d121b
+    );
+}
+
+.cta-glow {
+  position: absolute;
+
+  right: -120px;
+  bottom: -180px;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background: rgba(245,166,35,.08);
+
+  filter: blur(70px);
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-content h2 {
+  margin-bottom: 15px;
+
+  font-size: clamp(31px, 4vw, 48px);
+  line-height: 1.08;
+
+  letter-spacing: -2px;
+}
+
+.cta-content p {
+  max-width: 480px;
+
+  margin-bottom: 25px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  padding-top: 60px;
+
+  border-top: 1px solid var(--line);
+
+  background: #070a10;
+}
+
+.footer-top {
+  display: grid;
+
+  grid-template-columns: 1.8fr .8fr .8fr .8fr;
+
+  gap: 50px;
+
+  padding-bottom: 50px;
+}
+
+.footer-brand p {
+  max-width: 310px;
+
+  margin-top: 17px;
+
+  color: var(--muted-2);
+
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.footer-column h4 {
+  margin-bottom: 5px;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-column a {
+  width: fit-content;
+
+  color: var(--muted-2);
+
+  font-size: 10px;
+
+  transition: color .2s ease;
+}
+
+.footer-column a:hover {
+  color: var(--primary);
+}
+
+.footer-column i {
+  margin-right: 4px;
+}
+
+.footer-bottom {
+  min-height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid var(--line);
+
+  color: var(--muted-2);
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   FLOATING WHATSAPP
+========================================================= */
+
+.floating-wa {
+  position: fixed;
+
+  right: 22px;
+  bottom: 22px;
+
+  z-index: 90;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  min-height: 47px;
+
+  padding: 0 16px;
+
+  border-radius: 999px;
+
+  background: var(--green);
+
+  color: #fff;
+
+  box-shadow:
+    0 12px 35px rgba(37,211,102,.24);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.floating-wa i {
+  font-size: 18px;
+}
+
+.floating-wa:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 16px 40px rgba(37,211,102,.30);
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .hero-inner {
+    grid-template-columns: 1fr .85fr;
+    gap: 40px;
+  }
+
+  .game-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .game-image {
+    height: 155px;
+  }
+
+  .float-price {
+    left: -5px;
+  }
+
+  .float-order {
+    right: -5px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .container {
+    width: min(100% - 28px, var(--container));
+  }
+
+  .site-header {
+    height: 64px;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+
+  .header-wa {
+    padding: 9px 11px;
+  }
+
+  .header-wa span {
+    display: none;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand strong {
+    font-size: 17px;
+  }
+
+  .hero {
+    min-height: auto;
+
+    padding: 58px 0 60px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .hero-copy {
+    max-width: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 11vw, 58px);
+    letter-spacing: -2.7px;
+  }
+
+  .hero-copy > p {
+    font-size: 13px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    min-height: 45px;
+  }
+
+  .hero-visual {
+    min-height: 340px;
+  }
+
+  .visual-card {
+    max-width: 430px;
+  }
+
+  .float-price {
+    left: 0;
+    bottom: 15px;
+  }
+
+  .float-order {
+    right: 0;
+    top: 25px;
+  }
+
+  .quick-grid {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .quick-item,
+  .quick-item:first-child {
+    padding: 10px 0;
+
+    border-right: 0;
+  }
+
+  .games-section,
+  .advantages,
+  .how-section,
+  .faq-section,
+  .final-cta {
+    padding: 72px 0;
+  }
+
+  .section-heading {
+    display: block;
+
+    margin-bottom: 27px;
+  }
+
+  .game-count {
+    margin-top: 16px;
+  }
+
+  .game-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .game-filter {
+    overflow-x: auto;
+  }
+
+  .filter-btn {
+    flex-shrink: 0;
+  }
+
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+  }
+
+  .game-image {
+    height: 145px;
+  }
+
+  .game-details {
+    min-height: 64px;
+
+    padding: 10px;
+  }
+
+  .game-details h3 {
+    font-size: 10px;
+  }
+
+  .advantage-grid,
+  .steps {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .advantage-card {
+    min-height: 190px;
+  }
+
+  .cta-box {
+    min-height: 330px;
+
+    padding: 35px 25px;
+
+    border-radius: 20px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 35px 20px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    min-height: 75px;
+
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .floating-wa {
+    right: 15px;
+    bottom: 15px;
+
+    width: 50px;
+    height: 50px;
+    min-height: 50px;
+
+    padding: 0;
+
+    justify-content: center;
+  }
+
+  .floating-wa span {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .hero h1 {
+    font-size: 39px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+
+  .hero-trust {
+    gap: 13px;
+  }
+
+  .visual-card {
+    border-radius: 19px;
+  }
+
+  .visual-content {
+    padding: 20px;
+  }
+
+  .visual-img {
+    width: 93px;
+    height: 120px;
+  }
+
+  .visual-game-images {
+    height: 125px;
+  }
+
+  .visual-text strong {
+    font-size: 23px;
+  }
+
+  .float-price,
+  .float-order {
+    padding: 8px 10px;
+  }
+
+  .floating-card strong {
+    font-size: 8px;
+  }
+
+  .game-image {
+    height: 125px;
+  }
+
+  .popular-badge {
+    font-size: 6px;
+  }
+
+  .game-details > strong {
+    display: none;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+}
