@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#24190a"/><stop offset="1" stop-color="#80611b"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#ffd34d" stop-opacity=".75"/><stop offset="1" stop-color="#ffd34d" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="600" height="760" rx="34" fill="url(#bg)"/>
+<circle cx="500" cy="120" r="210" fill="url(#glow)"/>
+<circle cx="90" cy="620" r="250" fill="#ffd34d" opacity=".08"/>
+<path d="M80 520 Q160 250 300 180 Q450 105 535 280 Q445 250 395 340 Q340 435 330 610 L90 610Z" fill="#07111f" opacity=".78"/>
+<path d="M160 535 Q215 360 305 290 Q370 230 450 250 Q385 300 355 390 Q320 470 315 610 L135 610Z" fill="#ffd34d" opacity=".22"/>
+<circle cx="335" cy="265" r="72" fill="#101a2b" stroke="#ffd34d" stroke-width="8"/>
+<path d="M300 260 l35-58 34 58-34 42z" fill="#ffd34d" opacity=".9"/>
+<path d="M275 420 l70-90 80 100-45 55-75-5z" fill="#17263a" stroke="#ffd34d" stroke-width="5"/>
+<text x="38" y="78" fill="white" font-family="Arial, sans-serif" font-size="34" font-weight="800">PUBG MOBILE</text>
+<text x="38" y="118" fill="#ffd34d" font-family="Arial, sans-serif" font-size="20" font-weight="700">BATTLEGROUNDS</text>
+<rect x="35" y="655" width="530" height="70" rx="22" fill="#050b14" opacity=".82"/>
+<text x="65" y="700" fill="white" font-family="Arial, sans-serif" font-size="29" font-weight="800">PUBG</text>
+<text x="125" y="699" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="700">Top Up Game</text>
+</svg>
