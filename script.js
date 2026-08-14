@@ -1,672 +1,488 @@
-/*
-========================================
-RANASHOP V2
-========================================
+const nominalData = {
+  mlbb: [
+    { name: "86 Diamond", price: 20000 },
+    { name: "172 Diamond", price: 40000 },
+    { name: "257 Diamond", price: 58000 },
+    { name: "344 Diamond", price: 78000 },
+    { name: "429 Diamond", price: 96000 },
+    { name: "514 Diamond", price: 115000 },
+    { name: "706 Diamond", price: 155000 },
+    { name: "1050 Diamond", price: 230000 },
+    { name: "Weekly Pass", price: 28000 }
+  ],
 
-HARGA DAN DATA GAME ADA DI SINI.
+  freefire: [
+    { name: "70 Diamond", price: 10000 },
+    { name: "140 Diamond", price: 20000 },
+    { name: "355 Diamond", price: 50000 },
+    { name: "720 Diamond", price: 100000 },
+    { name: "1450 Diamond", price: 200000 },
+    { name: "2180 Diamond", price: 300000 },
+    { name: "Member Mingguan", price: 30000 }
+  ],
 
-NOMOR WHATSAPP ADMIN:
-62895417880954
+  pubg: [
+    { name: "60 UC", price: 15000 },
+    { name: "325 UC", price: 70000 },
+    { name: "660 UC", price: 140000 },
+    { name: "1800 UC", price: 360000 },
+    { name: "3850 UC", price: 720000 }
+  ],
 
-Kalau nanti website ini diberikan ke klien,
-nomor WA dan harga tinggal diganti di file ini.
-*/
+  genshin: [
+    { name: "60 Genesis", price: 16000 },
+    { name: "300 Genesis", price: 80000 },
+    { name: "980 Genesis", price: 250000 },
+    { name: "1980 Genesis", price: 500000 },
+    { name: "3280 Genesis", price: 800000 },
+    { name: "6480 Genesis", price: 1500000 }
+  ],
 
+  hok: [
+    { name: "16 Token", price: 5000 },
+    { name: "80 Token", price: 20000 },
+    { name: "240 Token", price: 55000 },
+    { name: "400 Token", price: 90000 },
+    { name: "800 Token", price: 175000 }
+  ],
 
-const games = [
+  roblox: [
+    { name: "80 Robux", price: 15000 },
+    { name: "400 Robux", price: 70000 },
+    { name: "800 Robux", price: 140000 },
+    { name: "1700 Robux", price: 280000 },
+    { name: "4500 Robux", price: 700000 }
+  ],
 
-  {
-    name: "Mobile Legends",
-    key: "mlbb",
-    publisher: "Moonton",
-    img: "mlbb.jpg",
-    unit: "Diamond",
-    icon: "💎",
+  valorant: [
+    { name: "475 VP", price: 55000 },
+    { name: "1000 VP", price: 105000 },
+    { name: "2050 VP", price: 210000 },
+    { name: "3650 VP", price: 360000 },
+    { name: "5350 VP", price: 520000 }
+  ],
 
-    prices: [
-      [86, 20000],
-      [172, 40000],
-      [257, 58000],
-      [344, 78000],
-      [429, 96000],
-      [514, 115000],
-      [706, 155000],
-      [1050, 230000],
-      [999, "Weekly Pass", 28000]
-    ]
-  },
+  codm: [
+    { name: "80 CP", price: 15000 },
+    { name: "400 CP", price: 70000 },
+    { name: "800 CP", price: 135000 },
+    { name: "2000 CP", price: 320000 },
+    { name: "4000 CP", price: 620000 }
+  ],
 
+  aov: [
+    { name: "40 Voucher", price: 10000 },
+    { name: "90 Voucher", price: 22000 },
+    { name: "230 Voucher", price: 50000 },
+    { name: "470 Voucher", price: 100000 },
+    { name: "950 Voucher", price: 195000 }
+  ],
 
-  {
-    name: "Free Fire",
-    key: "freefire",
-    publisher: "Garena",
-    img: "freefire.jpg",
-    unit: "Diamond",
-    icon: "💠",
-
-    prices: [
-      [70, 10000],
-      [140, 20000],
-      [355, 50000],
-      [720, 100000],
-      [1450, 200000],
-      [2180, 300000],
-      [999, "Member Mingguan", 30000]
-    ]
-  },
-
-
-  {
-    name: "PUBG Mobile",
-    key: "pubg",
-    publisher: "Tencent",
-    img: "pubg.jpg",
-    unit: "UC",
-    icon: "🪙",
-
-    prices: [
-      [60, 15000],
-      [325, 70000],
-      [660, 140000],
-      [1800, 360000],
-      [3850, 720000]
-    ]
-  },
-
-
-  {
-    name: "Genshin Impact",
-    key: "genshin",
-    publisher: "HoYoverse",
-    img: "genshin.jpg",
-    unit: "Genesis",
-    icon: "💎",
-
-    prices: [
-      [60, 16000],
-      [300, 80000],
-      [980, 250000],
-      [1980, 500000],
-      [3280, 800000],
-      [6480, 1500000]
-    ]
-  },
+  lol: [
+    { name: "575 RP", price: 60000 },
+    { name: "1380 RP", price: 135000 },
+    { name: "2800 RP", price: 260000 },
+    { name: "5000 RP", price: 450000 }
+  ]
+};
 
 
-  {
-    name: "Honor of Kings",
-    key: "hok",
-    publisher: "Tencent",
-    img: "hok.jpg",
-    unit: "Token",
-    icon: "🟡",
-
-    prices: [
-      [16, 5000],
-      [80, 20000],
-      [240, 55000],
-      [400, 90000],
-      [800, 175000]
-    ]
-  },
-
-
-  {
-    name: "Roblox",
-    key: "roblox",
-    publisher: "Roblox",
-    img: "roblox.png",
-    unit: "Robux",
-    icon: "🟥",
-
-    prices: [
-      [80, 15000],
-      [400, 70000],
-      [800, 140000],
-      [1700, 280000],
-      [4500, 700000]
-    ]
-  },
-
-
-  /* GAME TAMBAHAN */
-
-  {
-    name: "Valorant",
-    key: "valorant",
-    publisher: "Riot Games",
-    img: "valorant.jpg",
-    unit: "VP",
-    icon: "🎯",
-
-    prices: [
-      [475, 55000],
-      [1000, 110000],
-      [2050, 220000],
-      [3650, 380000]
-    ]
-  },
-
-
-  {
-    name: "Call of Duty Mobile",
-    key: "codm",
-    publisher: "Activision",
-    img: "codm.jpg",
-    unit: "CP",
-    icon: "🎖️",
-
-    prices: [
-      [80, 15000],
-      [420, 65000],
-      [880, 125000],
-      [2400, 320000]
-    ]
-  },
-
-
-  {
-    name: "Arena of Valor",
-    key: "aov",
-    publisher: "Garena",
-    img: "aov.jpg",
-    unit: "Voucher",
-    icon: "⚔️",
-
-    prices: [
-      [40, 10000],
-      [90, 20000],
-      [230, 50000],
-      [470, 100000]
-    ]
-  },
-
-
-  {
-    name: "League of Legends",
-    key: "lol",
-    publisher: "Riot Games",
-    img: "lol.jpg",
-    unit: "RP",
-    icon: "🟦",
-
-    prices: [
-      [125, 18000],
-      [420, 55000],
-      [700, 90000],
-      [1375, 170000]
-    ]
-  }
-
-];
-
-
-let selectedGame = null;
-let selectedProduct = null;
+let currentGame = "";
+let currentGameKey = "";
+let selectedNominal = null;
 let selectedPrice = 0;
-let quantity = 1;
 
 
-/*
-========================================
-FORMAT RUPIAH
-========================================
-*/
+/* =========================
+   FORMAT RUPIAH
+========================= */
 
 function rupiah(number) {
-
-  if (typeof number !== "number") {
-    return number;
-  }
-
-  return "Rp " + number.toLocaleString("id-ID");
+  return "Rp " + Number(number).toLocaleString("id-ID");
 }
 
 
-/*
-========================================
-RENDER GAME
-========================================
-*/
+/* =========================
+   PILIH GAME
+========================= */
 
-function renderGames() {
+function selectGame(name, key) {
+  currentGame = name;
+  currentGameKey = key;
 
-  const grid = document.getElementById("gameGrid");
-
-  grid.innerHTML = games.map((game, index) => {
-
-    return `
-
-      <article
-        class="game-card"
-        onclick="openOrder(${index})"
-      >
-
-        <div class="game-img">
-
-          <img
-            src="${game.img}"
-            alt="${game.name}"
-            onerror="this.src='diamond.jpg'"
-          >
-
-        </div>
-
-
-        <div class="game-body">
-
-          <h3>
-            ${game.name}
-          </h3>
-
-          <p>
-            ${game.publisher}
-            •
-            ${game.unit}
-          </p>
-
-          <span class="arrow">
-            <i class="fa-solid fa-arrow-right"></i>
-          </span>
-
-        </div>
-
-      </article>
-
-    `;
-
-  }).join("");
-
-}
-
-
-/*
-========================================
-OPEN ORDER
-========================================
-*/
-
-function openOrder(index) {
-
-  selectedGame = games[index];
-
-  selectedProduct = null;
+  selectedNominal = null;
   selectedPrice = 0;
-  quantity = 1;
 
-
-  document.getElementById("modalGame").textContent =
-    selectedGame.name;
-
-
-  document.getElementById("modalIcon").textContent =
-    selectedGame.icon;
-
-
-  document.getElementById("qty").textContent = "1";
-
-
-  const nominalBox =
-    document.getElementById("nominals");
-
-
-  nominalBox.innerHTML =
-    selectedGame.prices.map((product) => {
-
-      let name;
-      let price;
-
-
-      /*
-      FORMAT KHUSUS WEEKLY PASS / MEMBER
-      */
-
-      if (
-        typeof product[1] === "string"
-      ) {
-
-        name = product[1];
-        price = product[2];
-
-      }
-
-      else {
-
-        name =
-          product[0] +
-          " " +
-          selectedGame.unit;
-
-        price =
-          product[1];
-
-      }
-
-
-      return `
-
-        <div
-          class="nominal"
-          onclick="pickNominal(
-            this,
-            '${name}',
-            ${price}
-          )"
-        >
-
-          <b>
-            ${name}
-          </b>
-
-          <span>
-            ${rupiah(price)}
-          </span>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-
-  updateSummary();
-
-
-  document
-    .getElementById("orderModal")
-    .classList.add("show");
-
-
-  document.body.style.overflow = "hidden";
-
-}
-
-
-/*
-========================================
-PILIH NOMINAL
-========================================
-*/
-
-function pickNominal(
-  element,
-  name,
-  price
-) {
-
-  document
-    .querySelectorAll(".nominal")
-    .forEach(item => {
-
-      item.classList.remove("active");
-
-    });
-
-
-  element.classList.add("active");
-
-
-  selectedProduct = name;
-
-  selectedPrice = price;
-
-
-  updateSummary();
-
-}
-
-
-/*
-========================================
-JUMLAH
-========================================
-*/
-
-function changeQty(delta) {
-
-  quantity += delta;
-
-
-  if (quantity < 1) {
-    quantity = 1;
-  }
-
-
-  if (quantity > 99) {
-    quantity = 99;
-  }
-
-
-  document.getElementById("qty")
-    .textContent = quantity;
-
-
-  updateSummary();
-
-}
-
-
-/*
-========================================
-UPDATE TOTAL
-========================================
-*/
-
-function updateSummary() {
-
-  document.getElementById("sumProduct")
-    .textContent =
-    selectedProduct || "-";
-
-
-  document.getElementById("sumQty")
-    .textContent =
-    quantity;
-
-
-  document.getElementById("sumTotal")
-    .textContent =
-    rupiah(
-      selectedPrice * quantity
-    );
-
-}
-
-
-/*
-========================================
-CLOSE MODAL
-========================================
-*/
-
-function closeOrder() {
-
-  document
-    .getElementById("orderModal")
-    .classList.remove("show");
-
-
-  document.body.style.overflow = "";
-
-}
-
-
-/*
-========================================
-SUBMIT ORDER
-========================================
-*/
-
-function submitOrder() {
-
-  const playerId =
-    document
-      .getElementById("playerId")
-      .value
-      .trim();
-
-
-  const serverId =
-    document
-      .getElementById("serverId")
-      .value
-      .trim();
-
-
-  const customerName =
-    document
-      .getElementById("customerName")
-      .value
-      .trim();
-
-
-  const customerWa =
-    document
-      .getElementById("customerWa")
-      .value
-      .trim();
-
-
-  /*
-  VALIDASI
-  */
-
-  if (!playerId) {
-
-    alert(
-      "Masukkan User ID / Player ID dulu."
-    );
-
-    return;
-  }
-
-
-  if (!selectedProduct) {
-
-    alert(
-      "Pilih nominal dulu."
-    );
-
-    return;
-  }
-
-
-  if (!customerName) {
-
-    alert(
-      "Masukkan nama pembeli."
-    );
-
-    return;
-  }
-
-
-  if (!customerWa) {
-
-    alert(
-      "Masukkan nomor WhatsApp."
-    );
-
-    return;
-  }
-
-
-  const total =
-    selectedPrice * quantity;
-
-
-  /*
-  PESAN WHATSAPP
-  */
-
-  const message =
-
-`Halo Admin RanaShop 👋
-
-Saya ingin order:
-
-🎮 *Game:* ${selectedGame.name}
-
-🆔 *User ID:* ${playerId}
-
-🌐 *Server:* ${serverId || "-"}
-
-💎 *Nominal:* ${selectedProduct}
-
-🔢 *Jumlah:* ${quantity}
-
-💰 *Total:* ${rupiah(total)}
-
-👤 *Nama:* ${customerName}
-
-📱 *WA:* ${customerWa}
-
-Mohon diproses ya.
-
-Terima kasih!`;
-
-
-  const whatsappUrl =
-    "https://wa.me/62895417880954?text=" +
-    encodeURIComponent(message);
-
-
-  window.open(
-    whatsappUrl,
-    "_blank"
-  );
-
-}
-
-
-/*
-========================================
-HOME
-========================================
-*/
-
-function showHome() {
-
-  closeOrder();
+  const games = document.getElementById("games");
+  const order = document.getElementById("orderSection");
+
+  if (games) games.style.display = "none";
+  if (order) order.style.display = "block";
+
+  const title = document.getElementById("selectedGameTitle");
+  const summaryGame = document.getElementById("summaryGame");
+  const summaryNominal = document.getElementById("summaryNominal");
+  const summaryTotal = document.getElementById("summaryTotal");
+  const qty = document.getElementById("qty");
+  const summaryQty = document.getElementById("summaryQty");
+
+  if (title) title.textContent = name;
+  if (summaryGame) summaryGame.textContent = name;
+  if (summaryNominal) summaryNominal.textContent = "-";
+  if (summaryTotal) summaryTotal.textContent = "Rp 0";
+  if (qty) qty.value = 1;
+  if (summaryQty) summaryQty.textContent = "1";
+
+  renderNominals();
 
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
-
 }
 
 
-/*
-========================================
-CLOSE MODAL KLIK LUAR
-========================================
-*/
+/* =========================
+   NOMINAL
+========================= */
 
-document
-  .getElementById("orderModal")
-  .addEventListener(
-    "click",
-    function(event) {
+function renderNominals() {
+  const grid = document.getElementById("nominalGrid");
 
-      if (
-        event.target.id ===
-        "orderModal"
-      ) {
+  if (!grid) return;
 
-        closeOrder();
+  grid.innerHTML = "";
 
-      }
+  const list = nominalData[currentGameKey] || [];
 
+  list.forEach(item => {
+    const div = document.createElement("div");
+
+    div.className = "nominal-item";
+
+    div.innerHTML = `
+      <img src="images/diamond.jpg" alt="${item.name}">
+      <span class="diamond-count">${item.name}</span>
+      <span class="price">${rupiah(item.price)}</span>
+    `;
+
+    div.addEventListener("click", function () {
+      selectNominal(div, item.name, item.price);
+    });
+
+    grid.appendChild(div);
+  });
+}
+
+
+function selectNominal(element, name, price) {
+  document
+    .querySelectorAll(".nominal-item")
+    .forEach(item => item.classList.remove("active"));
+
+  element.classList.add("active");
+
+  selectedNominal = name;
+  selectedPrice = price;
+
+  updateSummary();
+}
+
+
+/* =========================
+   QUANTITY
+========================= */
+
+function changeQty(delta) {
+  const input = document.getElementById("qty");
+
+  if (!input) return;
+
+  let value = parseInt(input.value) || 1;
+
+  value += delta;
+
+  if (value < 1) value = 1;
+  if (value > 99) value = 99;
+
+  input.value = value;
+
+  const summaryQty = document.getElementById("summaryQty");
+
+  if (summaryQty) {
+    summaryQty.textContent = value;
+  }
+
+  updateSummary();
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+function updateSummary() {
+  const qty =
+    parseInt(document.getElementById("qty")?.value) || 1;
+
+  const summaryNominal =
+    document.getElementById("summaryNominal");
+
+  const summaryTotal =
+    document.getElementById("summaryTotal");
+
+  const summaryQty =
+    document.getElementById("summaryQty");
+
+  if (summaryNominal) {
+    summaryNominal.textContent =
+      selectedNominal || "-";
+  }
+
+  if (summaryQty) {
+    summaryQty.textContent = qty;
+  }
+
+  const total = selectedPrice * qty;
+
+  if (summaryTotal) {
+    summaryTotal.textContent = rupiah(total);
+  }
+}
+
+
+/* =========================
+   KEMBALI KE GAME
+========================= */
+
+function backToGames() {
+  const order = document.getElementById("orderSection");
+  const games = document.getElementById("games");
+
+  if (order) order.style.display = "none";
+  if (games) games.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+/* =========================
+   ORDER WHATSAPP
+========================= */
+
+function submitOrder() {
+
+  const playerId =
+    document.getElementById("playerId")?.value.trim();
+
+  const serverId =
+    document.getElementById("serverId")?.value.trim();
+
+  const name =
+    document.getElementById("customerName")?.value.trim();
+
+  const wa =
+    document.getElementById("customerWa")?.value.trim();
+
+  const qty =
+    parseInt(document.getElementById("qty")?.value) || 1;
+
+  const payment =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    )?.value || "-";
+
+
+  if (!playerId) {
+    alert("Masukkan User ID / Player ID dulu.");
+    return;
+  }
+
+  if (!selectedNominal) {
+    alert("Pilih nominal terlebih dahulu.");
+    return;
+  }
+
+  if (!name) {
+    alert("Masukkan nama lengkap.");
+    return;
+  }
+
+  if (!wa) {
+    alert("Masukkan nomor WhatsApp.");
+    return;
+  }
+
+
+  const total = selectedPrice * qty;
+
+
+  const message = `Halo Admin RanaShop 👋
+
+Saya ingin melakukan pemesanan:
+
+🎮 GAME
+${currentGame}
+
+🆔 USER ID
+${playerId}
+
+🌐 SERVER / ZONE
+${serverId || "-"}
+
+💎 NOMINAL
+${selectedNominal}
+
+🔢 JUMLAH
+${qty}
+
+💳 PEMBAYARAN
+${payment}
+
+💰 TOTAL
+${rupiah(total)}
+
+👤 NAMA
+${name}
+
+📱 WHATSAPP
+${wa}
+
+Mohon dibantu proses pesanannya.
+Terima kasih 🙏`;
+
+
+  const adminNumber = "62895417880954";
+
+  const url =
+    `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+}
+
+
+/* =========================
+   SEARCH GAME
+========================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const search =
+    document.getElementById("gameSearch");
+
+  const cards =
+    document.querySelectorAll(".game-card");
+
+  if (!search || !cards.length) return;
+
+
+  search.addEventListener("input", function () {
+
+    const keyword =
+      search.value.toLowerCase().trim();
+
+    let visible = 0;
+
+
+    cards.forEach(card => {
+
+      const text =
+        card.textContent.toLowerCase();
+
+      const match =
+        text.includes(keyword);
+
+      card.style.display =
+        match ? "" : "none";
+
+      if (match) visible++;
+    });
+
+
+    const empty =
+      document.getElementById("noResults");
+
+    if (empty) {
+      empty.style.display =
+        visible === 0 ? "block" : "none";
     }
-  );
+
+  });
+
+});
 
 
-/*
-========================================
-START
-========================================
-*/
+/* =========================
+   FILTER GAME
+========================= */
 
-renderGames();
+document.addEventListener("DOMContentLoaded", function () {
+
+  const filters =
+    document.querySelectorAll(".filter-btn");
+
+  const cards =
+    document.querySelectorAll(".game-card");
+
+
+  filters.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+      filters.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      this.classList.add("active");
+
+      const filter =
+        this.dataset.filter || "all";
+
+
+      cards.forEach(card => {
+
+        const category =
+          card.dataset.category || "all";
+
+        if (
+          filter === "all" ||
+          category === filter
+        ) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    });
+
+  });
+
+});
+
+
+/* =========================
+   ESC KEY
+========================= */
+
+document.addEventListener("keydown", function (event) {
+
+  if (event.key === "Escape") {
+
+    const order =
+      document.getElementById("orderSection");
+
+    if (
+      order &&
+      order.style.display !== "none"
+    ) {
+      backToGames();
+    }
+
+  }
+
+});
