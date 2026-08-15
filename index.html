@@ -3,317 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Gaming Shop - Platform Top Up Game Terpercaya</title>
+    <title>RanaShop - Top Up Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: #f8fafc; color: #1e293b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .box-card { background: #ffffff; border: 1px solid #e2e8f0; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .box-card:hover { border-color: #f59e0b; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-        .input-market { background: #f8fafc !important; border: 1px solid #cbd5e1 !important; color: #0f172a !important; }
-        .input-market:focus { border-color: #f59e0b !important; outline: none; background: #fff !important; }
-        .num-badge { background: #f59e0b; color: #000; font-weight: 800; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; margin-right: 8px; font-size: 11px; }
-        .selected-item { border: 2px solid #f59e0b !important; background: #fffbeb !important; }
+        body { background-color: #0f172a; color: white; font-family: sans-serif; }
+        .bg-card { background-color: #1e293b; border: 1px solid #334155; }
+        .nominal-btn { background-color: #1e293b; border: 1px solid #334155; transition: 0.2s; }
+        .nominal-btn:hover, .nominal-btn.active { border-color: #f59e0b; background-color: #334155; }
+        .input-dark { background-color: #0f172a; border: 1px solid #334155; color: white; }
     </style>
 </head>
-<body class="pb-28">
+<body class="p-4 max-w-4xl mx-auto">
 
-    <!-- Header / Navbar ala Marketplace -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 px-4 py-3 flex justify-between items-center shadow-sm">
-        <div class="flex items-center gap-2">
-            <div class="bg-amber-500 text-slate-950 font-black px-2.5 py-1 rounded-lg text-sm tracking-wider shadow-sm">AR</div>
-            <span class="font-extrabold text-sm tracking-wide text-slate-800">ITEMKU STYLE SHOP</span>
-        </div>
-        <div class="flex items-center gap-2">
-            <div class="bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-full text-xs flex items-center gap-1.5">
-                <span class="w-3.5 h-2.5 rounded-sm bg-red-600 inline-block overflow-hidden relative"><span class="absolute bottom-0 w-full h-1/2 bg-white"></span></span>
-                <span class="font-bold text-[11px] text-slate-700">IDR</span>
-            </div>
-            <a href="https://wa.me/62895417880954" target="_blank" class="bg-slate-100 border border-slate-200 p-2 rounded-full text-amber-600">
-                <i class="fas fa-headset text-sm"></i>
-            </a>
-        </div>
-    </header>
+    <!-- Header Banner -->
+    <div class="rounded-2xl overflow-hidden mb-6 border border-slate-700 shadow-2xl">
+        <img src="banner.jpg" alt="Banner Utama" class="w-full h-auto">
+    </div>
 
-    <div class="max-w-md mx-auto p-3 space-y-4">
+    <!-- Grid Utama: Transaksi & Nominal -->
+    <div class="grid md:grid-cols-3 gap-6">
         
-        <!-- Banner Promo -->
-        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-md">
-            <img src="banner-ranashop.jpg" alt="Banner Promo" class="w-full object-cover">
-        </div>
-
-        <!-- 1. Masukkan Data Akun -->
-        <div class="box-card p-4 rounded-xl">
-            <h3 class="font-bold text-xs mb-3 flex items-center text-slate-800">
-                <span class="num-badge">1</span> Masukkan Data Akun
-            </h3>
-            <div class="grid grid-cols-2 gap-2">
-                <input type="text" id="userId" placeholder="User ID" class="input-market w-full p-3 rounded-lg text-xs font-medium">
-                <input type="text" id="serverId" placeholder="Server ID" class="input-market w-full p-3 rounded-lg text-xs font-medium">
+        <!-- Kolom Kiri: Input Data -->
+        <div class="md:col-span-1 space-y-4">
+            <div class="bg-card p-5 rounded-xl">
+                <h3 class="font-bold mb-4 flex items-center gap-2"><span class="bg-blue-600 px-2 py-0.5 rounded text-sm">1</span> Masukkan Data Akun</h3>
+                <label class="text-xs text-slate-400">User ID</label>
+                <input type="text" class="input-dark w-full p-2.5 rounded-lg mb-3 text-sm" placeholder="Masukkan User ID">
+                <label class="text-xs text-slate-400">Server</label>
+                <select class="input-dark w-full p-2.5 rounded-lg text-sm">
+                    <option>Pilih Server</option>
+                </select>
             </div>
         </div>
 
-        <!-- Katalog Game (Grid Style Marketplace) -->
-        <div id="catalogSection" class="space-y-3">
-            <div class="flex justify-between items-center px-1">
-                <h3 class="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
-                    <span>🔥</span> PILIH KATEGORI GAME
-                </h3>
-            </div>
+        <!-- Kolom Tengah & Kanan: Nominal & Pembayaran -->
+        <div class="md:col-span-2 space-y-6">
             
-            <div class="grid grid-cols-3 gap-2.5">
-                
-                <!-- MLBB -->
-                <div onclick="pilihGame('Mobile Legends')" class="box-card p-2 rounded-xl cursor-pointer text-center relative overflow-hidden">
-                    <div class="absolute top-1 right-1 bg-amber-500 text-[9px] font-black text-black px-1 rounded shadow-sm">HOT</div>
-                    <img src="mlbb.jpg" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">Mobile Legends</p>
-                    <p class="text-[9px] text-slate-500 truncate">Moonton</p>
+            <!-- Pilih Nominal -->
+            <div class="bg-card p-5 rounded-xl">
+                <h3 class="font-bold mb-4 flex items-center gap-2"><span class="bg-blue-600 px-2 py-0.5 rounded text-sm">2</span> Pilih Nominal Diamond</h3>
+                <div class="grid grid-cols-3 gap-3" id="listNominal">
+                    <!-- Contoh 1 Nominal (Copy paste untuk buat banyak) -->
+                    <button class="nominal-btn p-3 rounded-xl text-center active" onclick="pilihNominal(this, '5 Diamond', 'Rp 1.500')">
+                        <div class="text-xs font-bold">5 Diamond</div>
+                        <div class="text-xs text-amber-500 mt-1">Rp 1.500</div>
+                    </button>
+                    <button class="nominal-btn p-3 rounded-xl text-center" onclick="pilihNominal(this, '11 Diamond', 'Rp 2.500')">
+                        <div class="text-xs font-bold">11 Diamond</div>
+                        <div class="text-xs text-amber-500 mt-1">Rp 2.500</div>
+                    </button>
+                    <!-- Tambahkan tombol lainnya sesuai kebutuhan -->
                 </div>
-
-                <!-- Free Fire -->
-                <div onclick="pilihGame('Free Fire')" class="box-card p-2 rounded-xl cursor-pointer text-center">
-                    <img src="freefire.jpg" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">Free Fire</p>
-                    <p class="text-[9px] text-slate-500 truncate">Garena</p>
-                </div>
-
-                <!-- PUBG Mobile -->
-                <div onclick="pilihGame('PUBG Mobile')" class="box-card p-2 rounded-xl cursor-pointer text-center">
-                    <img src="pubg.jpg" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">PUBG Mobile</p>
-                    <p class="text-[9px] text-slate-500 truncate">Tencent</p>
-                </div>
-
-                <!-- Genshin Impact -->
-                <div onclick="pilihGame('Genshin Impact')" class="box-card p-2 rounded-xl cursor-pointer text-center">
-                    <img src="genshin.jpg" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">Genshin Impact</p>
-                    <p class="text-[9px] text-slate-500 truncate">HoYoverse</p>
-                </div>
-
-                <!-- Honor of Kings -->
-                <div onclick="pilihGame('Honor of Kings')" class="box-card p-2 rounded-xl cursor-pointer text-center">
-                    <img src="hok.jpg" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">Honor of Kings</p>
-                    <p class="text-[9px] text-slate-500 truncate">Level Infinite</p>
-                </div>
-
-                <!-- Valorant -->
-                <div onclick="pilihGame('Valorant')" class="box-card p-2 rounded-xl cursor-pointer text-center">
-                    <img src="valorant.jpg" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">Valorant</p>
-                    <p class="text-[9px] text-slate-500 truncate">Riot Games</p>
-                </div>
-
-                <!-- CODM -->
-                <div onclick="pilihGame('Call of Duty Mobile')" class="box-card p-2 rounded-xl cursor-pointer text-center">
-                    <img src="codm.jpg" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">CODM</p>
-                    <p class="text-[9px] text-slate-500 truncate">Activision</p>
-                </div>
-
-                <!-- Roblox -->
-                <div onclick="pilihGame('Roblox')" class="box-card p-2 rounded-xl cursor-pointer text-center">
-                    <img src="roblox.png" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">Roblox</p>
-                    <p class="text-[9px] text-slate-500 truncate">Roblox Corp</p>
-                </div>
-
-                <!-- AOV -->
-                <div onclick="pilihGame('Arena of Valor')" class="box-card p-2 rounded-xl cursor-pointer text-center">
-                    <img src="aov.jpg" class="rounded-lg w-full aspect-square object-cover mb-1.5 border border-slate-100">
-                    <p class="text-[11px] font-bold text-slate-800 truncate">AOV</p>
-                    <p class="text-[9px] text-slate-500 truncate">Garena</p>
-                </div>
-
             </div>
+
+            <!-- Pembayaran & Kontak -->
+            <div class="bg-card p-5 rounded-xl">
+                <h3 class="font-bold mb-4"><span class="bg-blue-600 px-2 py-0.5 rounded text-sm mr-2">4</span> Pilih Pembayaran</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-3 p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
+                        <input type="radio" name="pay"> <span>SeaBank</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
+                        <input type="radio" name="pay"> <span>DANA</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Tombol Pesan -->
+            <button class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-4 rounded-xl shadow-lg transition">
+                PESAN SEKARANG via WhatsApp
+            </button>
         </div>
-
-        <!-- 2. Pilih Nominal (Muncul Dinamis) -->
-        <div id="nominalSection" class="box-card p-4 rounded-xl hidden space-y-3">
-            <div class="flex justify-between items-center">
-                <h3 class="font-bold text-xs flex items-center text-slate-800">
-                    <span class="num-badge">2</span> Pilih Nominal (<span id="selectedGameTitle" class="text-amber-600 ml-1"></span>)
-                </h3>
-                <button onclick="gantiGame()" class="text-[10px] text-cyan-600 font-semibold underline">Ganti Game</button>
-            </div>
-            <div class="grid grid-cols-2 gap-2" id="listNominal">
-                <!-- Diisi Script -->
-            </div>
-        </div>
-
-        <!-- 4. Pilih Pembayaran -->
-        <div class="box-card p-4 rounded-xl space-y-3">
-            <h3 class="font-bold text-xs flex items-center text-slate-800">
-                <span class="num-badge">4</span> Pilih Pembayaran
-            </h3>
-            
-            <div class="space-y-2">
-                <!-- QRIS -->
-                <div class="input-market p-3 rounded-xl flex items-center justify-between text-xs border border-amber-500/50 cursor-pointer bg-amber-50/50">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-qrcode text-amber-600 text-lg"></i>
-                        <div>
-                            <div class="font-bold text-slate-800">Qris (All Payment)</div>
-                            <div class="text-[9px] text-slate-500">Ovo, ShopeePay, Dana, BCA, dll</div>
-                        </div>
-                    </div>
-                    <span class="text-[9px] bg-amber-500 text-black font-extrabold px-1.5 py-0.5 rounded shadow-sm">INSTANT</span>
-                </div>
-
-                <!-- Transfer Bank BCA -->
-                <div class="input-market p-3 rounded-xl flex items-center justify-between text-xs opacity-90">
-                    <div class="flex items-center gap-2.5">
-                        <img src="bca.png" class="w-7 h-5 object-contain rounded bg-white p-0.5 border" alt="BCA">
-                        <div>
-                            <div class="font-bold text-slate-800">Transfer Bank (BCA)</div>
-                            <div class="text-[9px] text-slate-500">Verifikasi Otomatis</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SeaBank -->
-                <div class="input-market p-3 rounded-xl flex items-center justify-between text-xs opacity-90">
-                    <div class="flex items-center gap-2.5">
-                        <img src="seabank.png" class="w-7 h-5 object-contain rounded bg-white p-0.5 border" alt="SeaBank">
-                        <div>
-                            <div class="font-bold text-slate-800">SeaBank Digital</div>
-                            <div class="text-[9px] text-slate-500">Bebas Biaya Admin</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tombol Checkout Melayang di Bawah -->
-        <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur p-3 border-t border-slate-200 z-40 shadow-lg">
-            <div class="max-w-md mx-auto">
-                <button onclick="checkoutWhatsApp()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs">
-                    <i class="fab fa-whatsapp text-base"></i>
-                    <span>Pesan Sekarang!</span>
-                </button>
-            </div>
-        </div>
-
     </div>
 
     <script>
-        const databaseProduk = {
-            'Mobile Legends': [
-                { nama: '86 Diamonds (50+50)', harga: 'Rp 17.999' },
-                { nama: '172 Diamonds (150+22)', harga: 'Rp 35.000' },
-                { nama: 'Weekly Diamond Pass', harga: 'Rp 29.000' },
-                { nama: 'Twilight Pass', harga: 'Rp 135.000' }
-            ],
-            'Free Fire': [
-                { nama: '70 Diamonds', harga: 'Rp 10.000' },
-                { nama: '140 Diamonds', harga: 'Rp 19.000' },
-                { nama: '355 Diamonds', harga: 'Rp 47.000' },
-                { nama: '720 Diamonds', harga: 'Rp 90.000' }
-            ],
-            'PUBG Mobile': [
-                { nama: '60 UC', harga: 'Rp 15.000' },
-                { nama: '325 UC', harga: 'Rp 78.000' },
-                { nama: '660 UC', harga: 'Rp 155.000' }
-            ],
-            'Genshin Impact': [
-                { nama: '60 Genesis Crystals', harga: 'Rp 15.000' },
-                { nama: '300 Genesis Crystals', harga: 'Rp 79.000' }
-            ],
-            'Honor of Kings': [
-                { nama: '80 Tokens', harga: 'Rp 16.000' },
-                { nama: '240 Tokens', harga: 'Rp 45.000' }
-            ],
-            'Valorant': [
-                { nama: '125 VP', harga: 'Rp 15.000' },
-                { nama: '420 VP', harga: 'Rp 45.000' }
-            ],
-            'Call of Duty Mobile': [
-                { nama: '80 CP', harga: 'Rp 16.000' },
-                { nama: '400 CP', harga: 'Rp 75.000' }
-            ],
-            'Roblox': [
-                { nama: '80 Robux', harga: 'Rp 15.000' },
-                { nama: '400 Robux', harga: 'Rp 70.000' }
-            ],
-            'Arena of Valor': [
-                { nama: '40 Vouchers', harga: 'Rp 10.000' },
-                { nama: '90 Vouchers', harga: 'Rp 20.000' }
-            ]
-        };
-
-        let activeGame = "";
-        let selectedItemName = "";
-        let selectedItemPrice = "";
-
-        function pilihGame(namaGame) {
-            activeGame = namaGame;
-            document.getElementById('selectedGameTitle').innerText = namaGame;
-            
-            document.getElementById('catalogSection').classList.add('hidden');
-            document.getElementById('nominalSection').classList.remove('hidden');
-
-            const container = document.getElementById('listNominal');
-            container.innerHTML = '';
-
-            const items = databaseProduk[namaGame] || [{ nama: 'Paket Utama', harga: 'Rp 10.000' }];
-
-            items.forEach(item => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'box-card p-3 rounded-lg text-left cursor-pointer transition';
-                btn.innerHTML = `
-                    <div class="text-[11px] font-bold text-slate-800">${item.nama}</div>
-                    <div class="text-[11px] text-amber-600 font-extrabold mt-1">${item.harga}</div>
-                `;
-                btn.onclick = function() {
-                    document.querySelectorAll('#listNominal button').forEach(b => b.classList.remove('selected-item'));
-                    btn.classList.add('selected-item');
-                    selectedItemName = item.nama;
-                    selectedItemPrice = item.harga;
-                };
-                container.appendChild(btn);
-            });
-        }
-
-        function gantiGame() {
-            document.getElementById('nominalSection').classList.add('hidden');
-            document.getElementById('catalogSection').classList.remove('hidden');
-            selectedItemName = "";
-            selectedItemPrice = "";
-        }
-
-        function checkoutWhatsApp() {
-            const userId = document.getElementById('userId').value.trim();
-            const serverId = document.getElementById('serverId').value.trim();
-
-            if (!activeGame) {
-                alert('Silakan pilih game terlebih dahulu!');
-                return;
-            }
-            if (!userId) {
-                alert('Masukkan ID Akun Anda pada Langkah 1!');
-                document.getElementById('userId').focus();
-                return;
-            }
-            if (!selectedItemName) {
-                alert('Silakan pilih nominal produk terlebih dahulu!');
-                return;
-            }
-
-            const targetWa = "62895417880954";
-            const fullId = serverId ? `${userId} (${serverId})` : userId;
-            
-            const teksPesan = `Halo Admin, saya ingin order via Market Style:%0A%0A` +
-                              `🎮 *Game:* ${activeGame}%0A` +
-                              `🆔 *ID Akun:* ${fullId}%0A` +
-                              `📦 *Item:* ${selectedItemName}%0A` +
-                              `💰 *Harga:* ${selectedItemPrice}%0A` +
-                              `💳 *Pembayaran:* QRIS (All Payment)%0A%0A` +
-                              `Mohon diproses, terima kasih!`;
-
-            window.open(`https://wa.me/${targetWa}?text=${teksPesan}`, '_blank');
+        function pilihNominal(btn, nama, harga) {
+            // Hapus class active dari semua tombol
+            document.querySelectorAll('.nominal-btn').forEach(b => b.classList.remove('active'));
+            // Tambahkan ke tombol yang diklik
+            btn.classList.add('active');
+            console.log("Dipilih: " + nama + " dengan harga " + harga);
         }
     </script>
 </body>
